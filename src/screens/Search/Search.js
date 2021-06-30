@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, Text, TouchableOpacity, Button } from 'react-native';
+import { SafeAreaView, View, FlatList, Text, TouchableOpacity } from 'react-native';
 import ListingCard from '../../components/ListingCard/listingCard';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';

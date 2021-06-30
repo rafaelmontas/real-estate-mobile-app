@@ -4,14 +4,14 @@ const styles = StyleSheet.create({
   SearchHeader: {
     flexDirection: 'row',
     padding: 15,
-    backgroundColor: 'white',
+    // backgroundColor: 'red',
     height: 80,
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#e3e3e3'
   },
-  searchButton: {
+  SearchInputCont: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
@@ -21,32 +21,44 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 13
   },
-  searchText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    // backgroundColor: 'red',
+  SearchInput: {
+    // backgroundColor: 'blue',
+    fontSize: 16,
     flex: 1,
+    marginLeft: 8,
     borderRightColor: 'grey',
     borderRightWidth: 1
   },
-  searchInnerText: {
-    fontSize: 16,
-    marginLeft: 8,
-    color: 'grey'
-  },
-  filterButton: {
+  cancelButton: {
     marginLeft: 13
   },
-  filterText: {
+  cancelText: {
     fontSize: 14,
     color: '#1657D7',
     fontWeight: '600'
   },
-  flatContainer: {
-    marginBottom: 150
-  },
-  listContainer: {
+  // Suggestions
+  suggestContainer: {
     padding: 15
+  },
+  suggestion: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgrey'
+  },
+  suggestInfo: {
+    marginLeft: 12
+  },
+  infoSector: {
+    fontSize: 15,
+    color: 'black',
+    fontWeight: '100'
+  },
+  infoProvince: {
+    color: 'grey',
+    fontWeight: '100'
   }
 })
 
