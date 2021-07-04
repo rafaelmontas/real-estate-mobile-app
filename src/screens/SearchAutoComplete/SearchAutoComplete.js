@@ -1,36 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, FlatList, Text, TouchableOpacity, TextInput } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { sectorsProvinces } from '../../utils/sectorsProvinces';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import styles from './Styles';
 
 
-const SearchAutoComplete = () => {
-  const [inputText, setInputText] = useState('');
+const SearchAutoComplete = (props) => {
   const [suggestions, setSuggestions] = useState(sectorsProvinces.slice(0, 6));
-  const [province, setProvince] = useState('');
-  const [sector, setSector] = useState('');
+  const navigation = useNavigation();
+
+  useFocusEffect(React.useCallback(() => {
+    // Do something when the screen is focused
+    console.log('search mounted')
+    return () => {
+      // Do something when the screen is unfocused
+      // Useful for cleanup functions
+      console.log('search unmounted')
+    }
+  }, []))
 
 
   const onTextChange = (text) => {
-    console.log(text)
+    // console.log(text)
     if (text.length === 0) {
       setSuggestions(sectorsProvinces.slice(0, 6))
-      setInputText(text)
+      props.setInputText(text)
     } else {
       const regex = new RegExp(`${text}`, 'i');
       const newSuggestions = sectorsProvinces.sort(v => v.sector).filter(v => regex.test(v.sector)).slice(0, 6);
       setSuggestions(newSuggestions)
-      setInputText(text)
+      props.setInputText(text)
     }
   }
 
   const onSelect = (provinceSelected, sectorSelected) => {
-    setProvince(provinceSelected)
-    setSector(sectorSelected)
-    setInputText(sectorSelected)
-    console.log(province, sector)
+    props.setInputText(sectorSelected)
+    props.setProvince(provinceSelected)
+    props.setSector(sectorSelected)
+    // console.log(props.province, props.sector)
+    props.onSearch(provinceSelected, sectorSelected, props.listingType, props.minPrice, props.maxPrice, props.bedrooms, props.bathrooms, props.propertyType)
+    navigation.goBack()
   }
 
   return (
@@ -40,9 +51,10 @@ const SearchAutoComplete = () => {
           <FontAwesomeIcon icon={faSearch} size={18} color={'grey'}/>
           <TextInput style={styles.SearchInput}
                      placeholder="Buscar"
-                     value={inputText}
+                     value={props.inputText}
+                     autoFocus={true}
                      onChangeText={text => onTextChange(text)}/>
-          <TouchableOpacity style={styles.cancelButton} onPress={() => console.warn('Cancel button clicked')}>
+          <TouchableOpacity style={styles.cancelButton} onPress={() => navigation.goBack()}>
             <Text style={styles.cancelText}>Cancelar</Text>
           </TouchableOpacity>
         </View>

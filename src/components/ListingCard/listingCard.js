@@ -9,7 +9,7 @@ import styles from './styles';
 
 const ListingCard = (props) => {
 
-  console.log(props)
+  // console.log(props)
 
   return (
     <View style={styles.container}>

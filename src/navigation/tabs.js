@@ -9,18 +9,20 @@ import { Search, Likes } from '../screens';
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
+const Tabs = (props) => {
   return (
     <Tab.Navigator
       tabBarOptions={{
         activeTintColor: '#1657D7',
         inactiveTintColor: 'gray',
       }}>
-      <Tab.Screen name="Buscar" component={Search} options={{
+      <Tab.Screen name="Buscar" options={{
         tabBarIcon: ({ focused, color }) => (
           <FontAwesomeIcon icon={faSearch} size={25} color={color}/>
         )
-      }}/>
+      }}>
+        {() => <Search listings={props.listings} inputText={props.inputText}/>}
+      </Tab.Screen>
       <Tab.Screen name="Buscar2" component={Search} options={{
         tabBarIcon: ({ focused, color }) => (
           <FontAwesomeIcon icon={faSearch} size={25} color={color}/>
