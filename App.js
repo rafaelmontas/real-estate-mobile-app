@@ -31,13 +31,13 @@ const App = () => {
   const [propertyType, setPropertyType] = useState(['apartment', 'house', 'villa', 'penthouse']);
   const [listings, setListings] = useState([]);
 
-  useEffect(() => {
-    // http://192.168.1.17:5000
-    // https://www.hauzzy.com
-    fetch('http://192.168.1.17:5000/api/properties')
-    .then(response => response.json())
-    .then(res => console.log(res));
-  }, [])
+  // useEffect(() => {
+  //   // http://192.168.1.17:5000
+  //   // https://www.hauzzy.com
+  //   fetch('http://192.168.1.17:5000/api/properties')
+  //   .then(response => response.json())
+  //   .then(res => console.log(res));
+  // }, [])
 
   const searchListings = (province, sector, listingType, minPrice, maxPrice, bedrooms, bathrooms, propertyType) => {
     fetch(`http://192.168.1.17:5000/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)

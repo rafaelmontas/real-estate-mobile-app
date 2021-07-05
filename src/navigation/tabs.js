@@ -1,9 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faSearch, faHeart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faHeart, faUserCircle, faBell } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartReg,
-  faUserCircle as faUserCircleReg } from '@fortawesome/free-regular-svg-icons';
+  faUserCircle as faUserCircleReg,
+  faBell as faBellReg } from '@fortawesome/free-regular-svg-icons';
 
 import { Search, Likes } from '../screens';
 
@@ -23,17 +24,21 @@ const Tabs = (props) => {
       }}>
         {() => <Search listings={props.listings} inputText={props.inputText}/>}
       </Tab.Screen>
-      <Tab.Screen name="Buscar2" component={Search} options={{
-        tabBarIcon: ({ focused, color }) => (
-          <FontAwesomeIcon icon={faSearch} size={25} color={color}/>
-        )
-      }}/>
       <Tab.Screen name="Favoritos" component={Likes} options={{
         tabBarIcon: ({ focused, color }) => {
           if (focused) {
             return <FontAwesomeIcon icon={faHeart} size={25} color={color}/>
           } else {
             return <FontAwesomeIcon icon={faHeartReg} size={25} color={color}/>
+          }
+        }
+      }}/>
+      <Tab.Screen name="Alertas" component={Likes} options={{
+        tabBarIcon: ({ focused, color }) => {
+          if (focused) {
+            return <FontAwesomeIcon icon={faBell} size={25} color={color}/>
+          } else {
+            return <FontAwesomeIcon icon={faBellReg} size={25} color={color}/>
           }
         }
       }}/>
