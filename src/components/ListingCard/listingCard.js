@@ -1,18 +1,20 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHeart, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartReg } from '@fortawesome/free-regular-svg-icons';
 import NumberFormat from 'react-number-format';
+import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
 
 const ListingCard = (props) => {
+  const navigation = useNavigation();
 
   // console.log(props)
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('ListingDetails')}>
       {/* Image */}
       <View style={styles.imgContainer}>
         <Image style={styles.image} source={{ uri: props.listing.imgSrc }}/>
@@ -47,7 +49,7 @@ const ListingCard = (props) => {
           <Text style={styles.sector}>{props.listing.sector}</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

@@ -5,7 +5,6 @@ import { faSearch, faHeart, faUserCircle, faBell } from '@fortawesome/free-solid
 import { faHeart as faHeartReg,
   faUserCircle as faUserCircleReg,
   faBell as faBellReg } from '@fortawesome/free-regular-svg-icons';
-
 import { Search, Likes } from '../screens';
 
 const Tab = createBottomTabNavigator();

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SafeAreaView, View, FlatList, Text, TouchableOpacity } from 'react-native';
 import ListingCard from '../../components/ListingCard/listingCard';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -12,12 +12,6 @@ const Search = (props) => {
   const navigation = useNavigation();
   console.log(props.listings)
 
-  // useEffect(() => {
-  //   fetch('http://192.168.1.17:5000/api/properties')
-  //   .then(response => response.json())
-  //   .then(res => console.log(res));
-  // })
-
   return (
     <SafeAreaView>
       <View style={styles.SearchHeader}>
@@ -26,7 +20,7 @@ const Search = (props) => {
             <FontAwesomeIcon icon={faSearch} size={18} color={'grey'}/>
             <Text style={styles.searchInnerText}>{props.inputText  === '' ? 'Buscar' : props.inputText}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.filterButton} onPress={() => console.warn('Filters button clicked')}>
+          <TouchableOpacity style={styles.filterButton} onPress={() => navigation.navigate('Filters')}>
             <Text style={styles.filterText}>Filtros</Text>
           </TouchableOpacity>
         </View>
