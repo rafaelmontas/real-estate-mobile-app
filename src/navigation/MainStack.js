@@ -61,14 +61,17 @@ const MainStackScreen = (props) => {
                                      propertyType={propertyType}/>}
         </MainStack.Screen>
         <MainStack.Screen name="Filters"
-                          component={Filter}
+                          // component={Filter}
                           options={{
                             title: '',
-                            // headerBackImage: () => <Text/>,
-                            // headerBackTitle: 'Cancelar',
+                            headerLeftContainerStyle: {paddingLeft: 6},
+                            headerRightContainerStyle: {paddingRight: 6},
                             headerLeft: () => <Button title="Cancelar" onPress={() => navigation.goBack()}/>,
                             headerRight: () => <Button title="Limpiar" onPress={() => alert('This is a button!')}/>
-                          }}/>
+                          }}>
+          {() => <Filter listingType={listingType}
+                         setListingType={setListingType}/>}
+        </MainStack.Screen>
     </MainStack.Navigator>
   )
 }

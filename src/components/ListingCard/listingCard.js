@@ -14,7 +14,9 @@ const ListingCard = (props) => {
   // console.log(props)
 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('ListingDetails')}>
+    <TouchableOpacity style={styles.container}
+                      onPress={() => navigation.navigate('ListingDetails')}
+                      activeOpacity={1}>
       {/* Image */}
       <View style={styles.imgContainer}>
         <Image style={styles.image} source={{ uri: props.listing.imgSrc }}/>
