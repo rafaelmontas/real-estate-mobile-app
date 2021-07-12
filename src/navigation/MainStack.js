@@ -13,11 +13,11 @@ const MainStackScreen = (props) => {
   const [province, setProvince] = useState('');
   const [sector, setSector] = useState('');
   const [listingType, setListingType] = useState('sale');
+  const [propertyType, setPropertyType] = useState(['apartment', 'house', 'villa', 'penthouse']);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(2000000);
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
-  const [propertyType, setPropertyType] = useState(['apartment', 'house', 'villa', 'penthouse']);
   const [listings, setListings] = useState([]);
 
   // useEffect(() => {
@@ -27,6 +27,9 @@ const MainStackScreen = (props) => {
   //   .then(response => response.json())
   //   .then(res => console.log(res));
   // }, [])
+  useEffect(() => {
+    console.log(propertyType)
+  }, [propertyType])
 
   const searchListings = (province, sector, listingType, minPrice, maxPrice, bedrooms, bathrooms, propertyType) => {
     fetch(`http://192.168.1.17:5000/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
@@ -70,7 +73,9 @@ const MainStackScreen = (props) => {
                             headerRight: () => <Button title="Limpiar" onPress={() => alert('This is a button!')}/>
                           }}>
           {() => <Filter listingType={listingType}
-                         setListingType={setListingType}/>}
+                         setListingType={setListingType}
+                         propertyType={propertyType}
+                         setPropertyType={setPropertyType}/>}
         </MainStack.Screen>
     </MainStack.Navigator>
   )

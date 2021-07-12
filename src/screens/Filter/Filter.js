@@ -1,17 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, ScrollView, Text, TouchableOpacity, Button } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { sectorsProvinces } from '../../utils/sectorsProvinces';
+import { faSearch, faUmbrellaBeach, faHome, faCity } from '@fortawesome/free-solid-svg-icons';
+import { faBuilding } from '@fortawesome/free-regular-svg-icons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import styles from './Styles';
 
 const Filter = (props) => {
+  const [listingType, setListingType] = useState('sale');
+  const [propertyType, setPropertyType] = useState(['apartment', 'house', 'villa', 'penthouse']);
+  // const [minPrice, setMinPrice] = useState(0);
+  // const [maxPrice, setMaxPrice] = useState(2000000);
+  // const [bedrooms, setBedrooms] = useState(0);
+  // const [bathrooms, setBathrooms] = useState(0);
 
   useEffect(() => {
-    console.log(props.listingType)
-  }, [props.listingType])
+    console.log(props.listingType, props.propertyType)
+  }, [props.listingType, props.propertyType])
 
+  const handlePropertyType = (type) => {
+    let propTypes = propertyType
+    if (propTypes.includes(type)) {
+      const newPropTypes = propTypes.filter(item => item !== type)
+      setPropertyType(newPropTypes)
+      console.log(type, 'removed', `result: ${newPropTypes}`)
+    } else {
+      const newPropTypes = propTypes.concat(type)
+      // newPropTypes.push(type)
+      setPropertyType(newPropTypes)
+      console.log(type, 'not included', 'included', newPropTypes)
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -19,16 +38,54 @@ const Filter = (props) => {
         {/* Listing Type */}
         <View style={styles.listingTypeContainer}>
           <View style={styles.listingType}>
-            <TouchableOpacity style={props.listingType === 'sale' ? [styles.typeSale, styles.typeActive] : styles.typeSale}
+            <TouchableOpacity style={listingType === 'sale' ? [styles.typeSale, styles.typeActive] : styles.typeSale}
                               activeOpacity={1}
-                              onPress={() => props.setListingType('sale')}>
-              <Text style={props.listingType === 'sale' ? [styles.typeText, styles.typeTextActive] : styles.typeText}>Comprar</Text>
+                              onPress={() => setListingType('sale')}>
+              <Text style={listingType === 'sale' ? [styles.typeText, styles.typeTextActive] : styles.typeText}>Comprar</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={props.listingType === 'rent' ? [styles.typeRent, styles.typeActive] : styles.typeRent}
+            <TouchableOpacity style={listingType === 'rent' ? [styles.typeRent, styles.typeActive] : styles.typeRent}
                               activeOpacity={1}
-                              onPress={() => props.setListingType('rent')}>
-              <Text style={props.listingType === 'rent' ? [styles.typeText, styles.typeTextActive] : styles.typeText}>Alquilar</Text>
+                              onPress={() => setListingType('rent')}>
+              <Text style={listingType === 'rent' ? [styles.typeText, styles.typeTextActive] : styles.typeText}>Alquilar</Text>
             </TouchableOpacity>
+          </View>
+        </View>
+        {/* Property Type */}
+        <View style={styles.propertyTypeContainer}>
+          <Text style={styles.header}>Tipo de propiedad</Text>
+          <View style={styles.selectContainer}>
+            <View style={styles.selectTop}>
+              <TouchableOpacity
+                style={[styles.selectTopInner, propertyType.includes('apartment') ? styles.selectTopInnerLeftActive : styles.selectTopInnerLeft]}
+                activeOpacity={1}
+                onPress={() => handlePropertyType('apartment')}>
+                <FontAwesomeIcon icon={faCity} size={20} color={'grey'}/>
+                <Text style={styles.selectText}>Apartamento</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.selectTopInner, propertyType.includes('house') ? styles.selectTopInnerRightActive : styles.selectTopInnerRight]}
+                activeOpacity={1}
+                onPress={() => handlePropertyType('house')}>
+                <FontAwesomeIcon icon={faHome} size={20} color={'grey'}/>
+                <Text style={styles.selectText}>Casa</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.selectDown}>
+              <TouchableOpacity
+                style={[styles.selectDownInner, propertyType.includes('villa') ? styles.selectDownInnerLeftActive : styles.selectDownInnerLeft]}
+                activeOpacity={1}
+                onPress={() => handlePropertyType('villa')}>
+                <FontAwesomeIcon icon={faUmbrellaBeach} size={20} color={'grey'}/>
+                <Text style={styles.selectText}>Villa</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.selectDownInner, propertyType.includes('penthouse') ? styles.selectDownInnerRightActive : styles.selectDownInnerRight]}
+                activeOpacity={1}
+                onPress={() => handlePropertyType('penthouse')}>
+                <FontAwesomeIcon icon={faBuilding} size={20} color={'grey'}/>
+                <Text style={styles.selectText}>Penthouse</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         <Text style={styles.text}>
