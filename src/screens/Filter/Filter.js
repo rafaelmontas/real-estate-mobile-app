@@ -4,11 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch, faUmbrellaBeach, faHome, faCity } from '@fortawesome/free-solid-svg-icons';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import styles from './Styles';
 
 const Filter = (props) => {
+  const [scrollEnabled, setScrollEnabled] = useState(true)
   const [listingType, setListingType] = useState('sale');
   const [propertyType, setPropertyType] = useState(['apartment', 'house', 'villa', 'penthouse']);
+  const [minMaxPriceSale, setMinMaxPriceSale] = useState([50000, 500000])
+  const [minMaxPriceRent, setMinMaxPriceRent] = useState([500, 5000])
   // const [minPrice, setMinPrice] = useState(0);
   // const [maxPrice, setMaxPrice] = useState(2000000);
   // const [bedrooms, setBedrooms] = useState(0);
@@ -17,6 +21,12 @@ const Filter = (props) => {
   useEffect(() => {
     console.log(props.listingType, props.propertyType)
   }, [props.listingType, props.propertyType])
+
+  const handleListingType = (type) => {
+    setListingType(type)
+    setMinMaxPriceSale([50000, 500000])
+    setMinMaxPriceRent([500, 5000])
+  }
 
   const handlePropertyType = (type) => {
     let propTypes = propertyType
@@ -32,20 +42,68 @@ const Filter = (props) => {
     }
   }
 
+  const handlePriceRange = (values) => {
+    if (listingType === 'sale') {
+      setMinMaxPriceSale(values)
+    } else {
+      setMinMaxPriceRent(values)
+    }
+    console.log(values)
+  }
+  const renderPriceLabel = () => {
+    if (listingType === 'sale') {
+      if (minMaxPriceSale[0] === 50000 && minMaxPriceSale[1] === 500000) {
+        return <Text>Cualquier precio</Text>
+      } else if (minMaxPriceSale[0] !== 50000 && minMaxPriceSale[1] === 500000) {
+        return <Text>{`Desde $${minMaxPriceSale[0] / 1000}K`}</Text>
+      } else if (minMaxPriceSale[0] === 50000 && minMaxPriceSale[1] !== 500000) {
+        return <Text>{`Hasta $${minMaxPriceSale[1] / 1000}K`}</Text>
+      } else {
+        return <Text>{`$${minMaxPriceSale[0] / 1000}K - $${minMaxPriceSale[1] / 1000}K`}</Text>
+      }
+    } else {
+      if (minMaxPriceRent[0] === 500 && minMaxPriceRent[1] === 5000) {
+        return <Text>Cualquier precio</Text>
+      } else if (minMaxPriceRent[0] !== 500 && minMaxPriceRent[1] === 5000) {
+        if (minMaxPriceRent[0] < 1000) {
+          return <Text>{`Desde $${minMaxPriceRent[0]}`}</Text>
+        } else {
+          return <Text>{`Desde $${minMaxPriceRent[0] / 1000}K`}</Text>
+        }
+      } else if (minMaxPriceRent[0] === 500 && minMaxPriceRent[1] !== 5000) {
+        if (minMaxPriceRent[1] < 1000) {
+          return <Text>{`Hasta $${minMaxPriceRent[1]}`}</Text>
+        } else {
+          return <Text>{`Hasta $${minMaxPriceRent[1] / 1000}K`}</Text>
+        }
+      } else {
+        if (minMaxPriceRent[0] < 1000 && minMaxPriceRent[1] < 1000) {
+          return <Text>{`$${minMaxPriceRent[0]} - $${minMaxPriceRent[1]}`}</Text>
+        } else if (minMaxPriceRent[0] >= 1000 && minMaxPriceRent[1] >= 1000) {
+          return <Text>{`$${minMaxPriceRent[0] / 1000}K - $${minMaxPriceRent[1] / 1000}K`}</Text>
+        } else if (minMaxPriceRent[0] < 1000 && minMaxPriceRent[1] >= 1000) {
+          return <Text>{`$${minMaxPriceRent[0]} - $${minMaxPriceRent[1] / 1000}K`}</Text>
+        }
+      }
+    }
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
+      <ScrollView style={styles.scrollView}
+                  contentContainerStyle={styles.contentContainer}
+                  scrollEnabled={scrollEnabled}>
         {/* Listing Type */}
         <View style={styles.listingTypeContainer}>
           <View style={styles.listingType}>
             <TouchableOpacity style={listingType === 'sale' ? [styles.typeSale, styles.typeActive] : styles.typeSale}
                               activeOpacity={1}
-                              onPress={() => setListingType('sale')}>
+                              onPress={() => handleListingType('sale')}>
               <Text style={listingType === 'sale' ? [styles.typeText, styles.typeTextActive] : styles.typeText}>Comprar</Text>
             </TouchableOpacity>
             <TouchableOpacity style={listingType === 'rent' ? [styles.typeRent, styles.typeActive] : styles.typeRent}
                               activeOpacity={1}
-                              onPress={() => setListingType('rent')}>
+                              onPress={() => handleListingType('rent')}>
               <Text style={listingType === 'rent' ? [styles.typeText, styles.typeTextActive] : styles.typeText}>Alquilar</Text>
             </TouchableOpacity>
           </View>
@@ -86,6 +144,26 @@ const Filter = (props) => {
                 <Text style={styles.selectText}>Penthouse</Text>
               </TouchableOpacity>
             </View>
+          </View>
+        </View>
+        {/* Price Range Slider */}
+        <View style={styles.priceRangeContainer}>
+          <Text style={styles.header}>Rango de precio</Text>
+          <View style={styles.sliderContainer}>
+            <Text style={styles.priceLabels}>{renderPriceLabel()}</Text>
+            <MultiSlider
+              values={listingType === 'sale' ? minMaxPriceSale : minMaxPriceRent}
+              allowOverlap={false}
+              min={listingType === 'sale' ? 50000 : 500}
+              max={listingType === 'sale' ? 500000 : 5000}
+              step={listingType === 'sale' ? 10000 : 250}
+              // minMarkerOverlapDistance={10000}
+              onValuesChangeStart={() => setScrollEnabled(false)}
+              onValuesChangeFinish={() => setScrollEnabled(true)}
+              onValuesChange={(values) => handlePriceRange(values)}
+              sliderLength={280}
+              trackStyle={styles.trackStyle}
+              />
           </View>
         </View>
         <Text style={styles.text}>

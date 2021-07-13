@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'pink',
   },
   listingTypeContainer: {
-    marginBottom: 20
+    marginBottom: 30
   },
   listingType: {
     flexDirection: 'row',
@@ -52,12 +52,12 @@ const styles = StyleSheet.create({
   },
   // Property Type
   propertyTypeContainer: {
-    marginBottom: 20
+    marginBottom: 30
   },
   header: {
     fontSize: 20,
     fontWeight: '800',
-    marginBottom: 5
+    marginBottom: 20
   },
   selectContainer: {
     // backgroundColor: 'green',
@@ -127,6 +127,25 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 6,
     backgroundColor: 'rgba(44, 123, 236, 0.1)'
   },
+  // Price Range
+  priceRangeContainer: {
+    marginBottom: 30
+  },
+  sliderContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: 'gray'
+  },
+  priceLabels: {
+    marginTop: 5,
+    marginBottom: 5,
+    fontSize: 18
+  },
+  trackStyle: {
+    height: 6,
+    color: '#1657D7'
+  }
 })
 
 export default styles;
