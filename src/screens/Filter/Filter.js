@@ -15,8 +15,8 @@ const Filter = (props) => {
   const [minMaxPriceRent, setMinMaxPriceRent] = useState([500, 5000])
   // const [minPrice, setMinPrice] = useState(0);
   // const [maxPrice, setMaxPrice] = useState(2000000);
-  // const [bedrooms, setBedrooms] = useState(0);
-  // const [bathrooms, setBathrooms] = useState(0);
+  const [bedrooms, setBedrooms] = useState(0);
+  const [bathrooms, setBathrooms] = useState(0);
 
   useEffect(() => {
     console.log(props.listingType, props.propertyType)
@@ -87,6 +87,10 @@ const Filter = (props) => {
       }
     }
   }
+
+  // const handleBed = (selection) => {
+
+  // }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -164,6 +168,89 @@ const Filter = (props) => {
               sliderLength={280}
               trackStyle={styles.trackStyle}
               />
+          </View>
+        </View>
+        <View style={styles.bedroomsContainer}>
+          <Text style={styles.header}>Habitaciones</Text>
+          <View style={styles.bedWrapper}>
+            <TouchableOpacity
+              style={[styles.labelButton, styles.labelButtonFirst, bedrooms === 0 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBedrooms(0)}>
+              <Text style={[styles.labelText, bedrooms === 0 && styles.labelTextSelected]}>Todas</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, bedrooms === 1 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBedrooms(1)}>
+              <Text style={[styles.labelText, bedrooms === 1 && styles.labelTextSelected]}>1</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, bedrooms === 2 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBedrooms(2)}>
+              <Text style={[styles.labelText, bedrooms === 2 && styles.labelTextSelected]}>2</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, bedrooms === 3 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBedrooms(3)}>
+              <Text style={[styles.labelText, bedrooms === 3 && styles.labelTextSelected]}>3</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, bedrooms === 4 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBedrooms(4)}>
+              <Text style={[styles.labelText, bedrooms === 4 && styles.labelTextSelected]}>4</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, styles.labelButtonLast, bedrooms === 5 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBedrooms(5)}>
+              <Text style={[styles.labelText, bedrooms === 5 && styles.labelTextSelected]}>5</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        {/* Bathrooms */}
+        <View style={styles.bathroomsContainer}>
+          <Text style={styles.header}>Baños</Text>
+          <View style={styles.bathWrapper}>
+            <TouchableOpacity
+              style={[styles.labelButton, styles.labelButtonFirst, bathrooms === 0 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBathrooms(0)}>
+              <Text style={[styles.labelText, bathrooms === 0 && styles.labelTextSelected]}>Todas</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, bathrooms === 1 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBathrooms(1)}>
+              <Text style={[styles.labelText, bathrooms === 1 && styles.labelTextSelected]}>1+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, bathrooms === 2 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBathrooms(2)}>
+              <Text style={[styles.labelText, bathrooms === 2 && styles.labelTextSelected]}>2+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, bathrooms === 3 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBathrooms(3)}>
+              <Text style={[styles.labelText, bathrooms === 3 && styles.labelTextSelected]}>3+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, bathrooms === 4 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBathrooms(4)}>
+              <Text style={[styles.labelText, bathrooms === 4 && styles.labelTextSelected]}>4+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.labelButton, styles.labelButtonLast, bathrooms === 5 && styles.labelButtonSelected]}
+              activeOpacity={1}
+              onPress={() => setBathrooms(5)}>
+              <Text style={[styles.labelText, bathrooms === 5 && styles.labelTextSelected]}>5+</Text>
+            </TouchableOpacity>
           </View>
         </View>
         <Text style={styles.text}>

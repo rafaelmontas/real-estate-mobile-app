@@ -145,7 +145,53 @@ const styles = StyleSheet.create({
   trackStyle: {
     height: 6,
     color: '#1657D7'
-  }
+  },
+  // Bedrooms
+  bedroomsContainer: {
+    marginBottom: 30
+  },
+  bedWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    height: 45
+  },
+  labelButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    borderWidth: 0.5,
+    borderColor: 'gray'
+  },
+  labelButtonFirst: {
+    borderTopLeftRadius: 6,
+    borderBottomLeftRadius: 6
+  },
+  labelButtonLast: {
+    borderTopRightRadius: 6,
+    borderBottomRightRadius: 6
+  },
+  labelText: {
+    textAlign: 'center',
+    fontWeight: '600'
+  },
+  labelButtonSelected: {
+    backgroundColor: '#1657D7'
+  },
+  labelTextSelected: {
+    color: 'white'
+  },
+  // Bathrooms
+  bathroomsContainer: {
+    marginBottom: 30
+  },
+  bathWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    height: 45
+  },
 })
 
 export default styles;
