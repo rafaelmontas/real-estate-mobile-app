@@ -192,6 +192,32 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: 45
   },
+  // Search Button
+  searchContainer: {
+    // flex: 1,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    height: 70,
+    backgroundColor: '#f9fafa',
+    borderTopWidth: 0.5,
+    borderColor: 'lightgray',
+    paddingVertical: 12,
+    paddingHorizontal: 15
+  },
+  searchButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    padding: 12,
+    backgroundColor: '#1657D7',
+    borderRadius: 6
+  },
+  searchText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: 'white'
+  }
 })
 
 export default styles;

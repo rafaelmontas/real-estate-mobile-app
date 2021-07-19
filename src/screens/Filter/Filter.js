@@ -1,26 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, ScrollView, Text, TouchableOpacity, Button } from 'react-native';
+import { SafeAreaView, View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faSearch, faUmbrellaBeach, faHome, faCity } from '@fortawesome/free-solid-svg-icons';
+import { faUmbrellaBeach, faHome, faCity } from '@fortawesome/free-solid-svg-icons';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons';
-import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import styles from './Styles';
 
 const Filter = (props) => {
+  const navigation = useNavigation();
   const [scrollEnabled, setScrollEnabled] = useState(true)
-  const [listingType, setListingType] = useState('sale');
-  const [propertyType, setPropertyType] = useState(['apartment', 'house', 'villa', 'penthouse']);
-  const [minMaxPriceSale, setMinMaxPriceSale] = useState([50000, 500000])
-  const [minMaxPriceRent, setMinMaxPriceRent] = useState([500, 5000])
-  // const [minPrice, setMinPrice] = useState(0);
-  // const [maxPrice, setMaxPrice] = useState(2000000);
-  const [bedrooms, setBedrooms] = useState(0);
-  const [bathrooms, setBathrooms] = useState(0);
+  const [listingType, setListingType] = useState(props.listingType);
+  const [propertyType, setPropertyType] = useState(props.propertyType);
+  const [minMaxPriceSale, setMinMaxPriceSale] = useState([props.minPrice, props.maxPrice])
+  const [minMaxPriceRent, setMinMaxPriceRent] = useState(props.listingType === 'rent' ? [props.minPrice, props.maxPrice] : [500, 5000])
+  const [bedrooms, setBedrooms] = useState(props.bedrooms);
+  const [bathrooms, setBathrooms] = useState(props.bathrooms);
 
   useEffect(() => {
-    console.log(props.listingType, props.propertyType)
-  }, [props.listingType, props.propertyType])
+    if (props.reset) {
+      handleReset()
+    }
+  })
+
+  const handleReset = () => {
+    setListingType('sale')
+    setPropertyType(['apartment', 'house', 'villa', 'penthouse'])
+    setMinMaxPriceSale([50000, 500000])
+    setBedrooms(0)
+    setBathrooms(0)
+    props.setReset(false)
+  }
 
   const handleListingType = (type) => {
     setListingType(type)
@@ -88,9 +98,22 @@ const Filter = (props) => {
     }
   }
 
-  // const handleBed = (selection) => {
-
-  // }
+  const handleSearch = () => {
+    let province;
+    let sector;
+    let prices;
+    props.province === '' ? province = 'All' : province = props.province
+    props.sector === '' ? sector = 'All' : sector = props.sector
+    listingType === 'sale' ? prices = minMaxPriceSale : prices = minMaxPriceRent
+    props.onSearch(province, sector, listingType, prices[0], prices[1], bedrooms, bathrooms, propertyType)
+    props.setListingType(listingType)
+    props.setPropertyType(propertyType)
+    props.setMinPrice(prices[0])
+    props.setMaxPrice(prices[1])
+    props.setBedrooms(bedrooms)
+    props.setBathrooms(bathrooms)
+    navigation.goBack()
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -253,18 +276,14 @@ const Filter = (props) => {
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Text>
       </ScrollView>
-      <View style={{height: 60}}>
-        <Button title="Buscar"/>
+      <View style={styles.searchContainer}>
+        <TouchableOpacity
+          style={styles.searchButton}
+          activeOpacity={1}
+          onPress={() => handleSearch()}>
+          <Text style={styles.searchText}>Buscar</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   )

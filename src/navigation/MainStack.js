@@ -14,22 +14,20 @@ const MainStackScreen = (props) => {
   const [sector, setSector] = useState('');
   const [listingType, setListingType] = useState('sale');
   const [propertyType, setPropertyType] = useState(['apartment', 'house', 'villa', 'penthouse']);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(2000000);
+  const [minPrice, setMinPrice] = useState(50000);
+  const [maxPrice, setMaxPrice] = useState(500000);
   const [bedrooms, setBedrooms] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
+  const [reset, setReset] = useState(false)
   const [listings, setListings] = useState([]);
 
-  // useEffect(() => {
-  //   // http://192.168.1.17:5000
-  //   // https://www.hauzzy.com
-  //   fetch('http://192.168.1.17:5000/api/properties')
-  //   .then(response => response.json())
-  //   .then(res => console.log(res));
-  // }, [])
   useEffect(() => {
     console.log(propertyType)
   }, [propertyType])
+
+  const handleReset = () => {
+    setReset(true)
+  }
 
   const searchListings = (province, sector, listingType, minPrice, maxPrice, bedrooms, bathrooms, propertyType) => {
     fetch(`http://192.168.1.17:5000/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
@@ -66,16 +64,30 @@ const MainStackScreen = (props) => {
         <MainStack.Screen name="Filters"
                           // component={Filter}
                           options={{
-                            title: '',
+                            title: 'Filtros',
                             headerLeftContainerStyle: {paddingLeft: 6},
                             headerRightContainerStyle: {paddingRight: 6},
                             headerLeft: () => <Button title="Cancelar" onPress={() => navigation.goBack()}/>,
-                            headerRight: () => <Button title="Limpiar" onPress={() => alert('This is a button!')}/>
+                            headerRight: () => <Button title="Limpiar" onPress={() => handleReset()}/>
                           }}>
-          {() => <Filter listingType={listingType}
-                         setListingType={setListingType}
-                         propertyType={propertyType}
-                         setPropertyType={setPropertyType}/>}
+          {() => <Filter
+                    province={province}
+                    sector={sector}
+                    listingType={listingType}
+                    setListingType={setListingType}
+                    propertyType={propertyType}
+                    setPropertyType={setPropertyType}
+                    minPrice={minPrice}
+                    setMinPrice={setMinPrice}
+                    maxPrice={maxPrice}
+                    setMaxPrice={setMaxPrice}
+                    bedrooms={bedrooms}
+                    setBedrooms={setBedrooms}
+                    bathrooms={bathrooms}
+                    setBathrooms={setBathrooms}
+                    reset={reset}
+                    setReset={setReset}
+                    onSearch={searchListings}/>}
         </MainStack.Screen>
     </MainStack.Navigator>
   )
