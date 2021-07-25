@@ -1,17 +1,28 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   imageContainer: {
-    height: 200,
-    backgroundColor: 'gray'
+    height: 250,
+    backgroundColor: 'lightgray'
+  },
+  listingImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
   infoContainer: {
     paddingHorizontal: 15,
     paddingVertical: 12
   },
-  // topInfoCont: {
-
-  // },
+  topInfoCont: {
+    paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgray'
+  },
   topHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -49,6 +60,98 @@ const styles = StyleSheet.create({
   },
   mtsSup: {
     fontSize: 10,
+  },
+  // Amenities
+  amenitiesContainer: {
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgray'
+  },
+  header: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: 'black',
+    marginBottom: 10
+  },
+  amenitiesWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center'
+  },
+  amenity: {
+    flexBasis: '50%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 5
+  },
+  amenityText: {
+    marginLeft: 5,
+    fontSize: 16,
+    flex: 1,
+    flexWrap: 'wrap'
+  },
+  descriptionContainer: {
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgray'
+  },
+  descriptionText: {
+    fontSize: 16
+  },
+  showHideText: {
+    marginTop: 5,
+    fontSize: 16,
+    color: '#1657D7'
+  },
+  agentContainer: {
+    paddingVertical: 15,
+    // borderBottomWidth: 1,
+    // borderBottomColor: 'lightgray'
+  },
+  agentWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  imgContainer: {
+    // borderTopLeftRadius: 8,
+    // borderTopRightRadius: 8
+  },
+  image: {
+    height: 70,
+    width: 70,
+    borderRadius: 100
+  },
+  agentInfo: {
+    marginLeft: 8
+  },
+  agentName: {
+    fontWeight: '500',
+    marginBottom: 5
+  },
+  agentContact: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: 70,
+    backgroundColor: '#f9fafa',
+    borderTopWidth: 0.5,
+    borderColor: 'lightgray',
+    paddingVertical: 12,
+    paddingHorizontal: 15
+  },
+  contactButton: {
+    flexBasis: '49%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    padding: 12,
+    backgroundColor: '#1657D7',
+    borderRadius: 6
+  },
+  buttonsText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: 'white'
   }
 })
 

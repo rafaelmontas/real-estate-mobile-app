@@ -8,8 +8,8 @@ import { faHeart as faHeartReg, faShareSquare } from '@fortawesome/free-regular-
 const ListingHeaderRight = () => {
   return (
     <View style={{flexDirection: 'row'}}>
-      <FontAwesomeIcon icon={faHeartReg} size={22} color={'grey'} style={{marginRight: 20}}/>
-      <FontAwesomeIcon icon={faShareSquare} size={22} color={'grey'}/>
+      <FontAwesomeIcon icon={faHeartReg} size={22} color={'grey'}/>
+      {/* <FontAwesomeIcon icon={faShareSquare} size={22} color={'grey'}/> */}
     </View>
   )
 }
