@@ -22,15 +22,21 @@ const MainStackScreen = (props) => {
   const [listings, setListings] = useState([]);
 
   useEffect(() => {
-    console.log(propertyType)
-  }, [propertyType])
+    // console.log(propertyType)
+    fetch(`http://192.168.0.4:5000/api/properties`)
+      .then(response => response.json())
+      .then(res => {
+        setListings(res.properties)
+        console.log(res)
+      });
+  }, [])
 
   const handleReset = () => {
     setReset(true)
   }
 
   const searchListings = (province, sector, listingType, minPrice, maxPrice, bedrooms, bathrooms, propertyType) => {
-    fetch(`http://192.168.1.17:5000/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
+    fetch(`http://192.168.0.4:5000/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
       .then(response => response.json())
       .then(res => {
         setListings(res.properties)

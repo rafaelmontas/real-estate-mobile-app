@@ -2,7 +2,7 @@ const data = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     imgSrc: 'https://s3.amazonaws.com/real.estate.dom/apart.jpg',
-    price: 110000,
+    listing_price: 110000,
     beds: 2,
     baths: 2,
     cars: 2,
@@ -15,7 +15,7 @@ const data = [
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
     imgSrc: 'https://s3.amazonaws.com/real.estate.dom/metro.jpg',
-    price: 95000,
+    listing_price: 95000,
     beds: 1,
     baths: 1,
     cars: 2,
@@ -28,7 +28,7 @@ const data = [
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
     imgSrc: 'https://s3.amazonaws.com/real.estate.dom/boat.jpg',
-    price: 125000,
+    listing_price: 125000,
     beds: 2,
     baths: 2,
     cars: 2,

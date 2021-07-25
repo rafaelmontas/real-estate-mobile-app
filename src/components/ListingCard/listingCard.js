@@ -11,20 +11,21 @@ import styles from './styles';
 const ListingCard = (props) => {
   const navigation = useNavigation();
 
-  // console.log(props)
-
   return (
     <TouchableOpacity style={styles.container}
-                      onPress={() => navigation.navigate('ListingDetails')}
+                      onPress={() => navigation.navigate('ListingDetails', {
+                        screen: 'ListingDetails',
+                        listingId: props.listing.id
+                      })}
                       activeOpacity={1}>
       {/* Image */}
       <View style={styles.imgContainer}>
-        <Image style={styles.image} source={{ uri: props.listing.imgSrc }}/>
+        <Image style={styles.image} source={{ uri: props.listing['PropertyPictures'][0].location }}/>
       </View>
       {/* Listing Info View */}
       <View style={styles.cardInfo}>
         <View style={styles.priceLike}>
-          <NumberFormat value={props.listing.price}
+          <NumberFormat value={props.listing.listing_price}
                         displayType={'text'}
                         thousandSeparator={true}
                         prefix={'$'}
@@ -35,14 +36,14 @@ const ListingCard = (props) => {
         </View>
         <View style={styles.info}>
           <Text style={styles.bedsBaths}>
-            {props.listing.beds} {props.listing.beds > 1 ? 'habs' : 'hab'}
+            {props.listing.bedrooms} {props.listing.bedrooms > 1 ? 'habs' : 'hab'}
           </Text>
           <Text style={styles.bedsBaths}>
-            {props.listing.baths} {props.listing.baths > 1 ? 'baños' : 'baño'}
+            {props.listing.bathrooms} {props.listing.bathrooms > 1 ? 'baños' : 'baño'}
           </Text>
-          <Text style={styles.parq}>{props.listing.cars} parq</Text>
+          <Text style={styles.parq}>{props.listing.parking_spaces} parq</Text>
           <View style={styles.mts}>
-            <Text style={styles.mtsNum}>{props.listing.mts} m</Text>
+            <Text style={styles.mtsNum}>{props.listing.square_meters} m</Text>
             <Text style={styles.mtsSup}>2</Text>
           </View >
         </View>

@@ -6,11 +6,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useNavigation } from '@react-navigation/native';
 import styles from './Styles';
 
-import data from '../../../assets/data/data';
 
 const Search = (props) => {
   const navigation = useNavigation();
-  console.log(props.listings)
 
   return (
     <SafeAreaView>
@@ -26,7 +24,7 @@ const Search = (props) => {
         </View>
       </View>
       <View style={styles.flatContainer}>
-        <FlatList data={data}
+        <FlatList data={props.listings}
                   renderItem={({item}) => <ListingCard listing={item}
                   keyExtractor={(itemKey) => itemKey.id} />}
                   contentContainerStyle={styles.listContainer}/>
