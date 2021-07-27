@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
+import { SafeAreaView, View, Text, ScrollView, Image,
+TouchableOpacity, Share, Linking } from 'react-native';
 import NumberFormat from 'react-number-format';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 import ReadMore from 'react-native-read-more-text';
+import RBSheet from "react-native-raw-bottom-sheet";
+import ContactForm from '../../components/ContactForm/ContactForm';
 import styles from './Styles';
 
 
@@ -12,6 +15,7 @@ const ListingDetails = ({route, navigation}) => {
   const [listing, setListing] = useState({})
   const [agent, setAgent] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+  const refRBSheet = useRef()
   const amenities = {
     half_bathrooms: '1/2 Baño',
     air_conditioner: 'Aire Acondicionado',
@@ -37,12 +41,12 @@ const ListingDetails = ({route, navigation}) => {
   }
 
   useEffect(() => {
-    fetch(`http://192.168.0.4:5000/api/properties/${route.params.listingId}`)
+    fetch(`http://192.168.1.17:5000/api/properties/${route.params.listingId}`)
       .then(response => response.json())
       .then(res => {
         setListing(res)
         console.log(res)
-        return fetch(`http://192.168.0.4:5000/api/agents/${res.agent_id}`)
+        return fetch(`http://192.168.1.17:5000/api/agents/${res.agent_id}`)
       })
       .then(response => response.json())
       .then(res => {
@@ -80,6 +84,16 @@ const ListingDetails = ({route, navigation}) => {
     );
   }
 
+  const onShare = async () => {
+    try {
+      await Share.share({
+        url: `https://www.hauzzy.com/properties/${listing.id}`
+      })
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
   if (!isLoading) {
     return (
       <SafeAreaView style={styles.container}>
@@ -100,7 +114,9 @@ const ListingDetails = ({route, navigation}) => {
                   renderText={(value) => (
                     <Text style={styles.price}>{value}</Text>
                   )} />
-                <FontAwesomeIcon icon={faEllipsisH} size={20} color={'grey'}/>
+                  <TouchableOpacity activeOpacity={1} onPress={() => onShare()}>
+                    <FontAwesomeIcon icon={faEllipsisH} size={20} color={'grey'}/>
+                  </TouchableOpacity>
               </View>
               <Text style={styles.sector}>{listing.sector}</Text>
               <View style={styles.stats}>
@@ -152,17 +168,32 @@ const ListingDetails = ({route, navigation}) => {
             </View>
           </View>
         </ScrollView>
+        <RBSheet
+          ref={refRBSheet}
+          closeOnDragDown={true}
+          closeOnPressMask={true}
+          height={700}
+          customStyles={{
+            container: {
+              borderRadius: 12
+            },
+            draggableIcon: {
+              backgroundColor: 'grey'
+            }
+          }}>
+          <ContactForm/>
+        </RBSheet>
         <View style={styles.agentContact}>
           <TouchableOpacity
             style={styles.contactButton}
             activeOpacity={1}
-            onPress={() => console.log('contact agent')}>
+            onPress={() => refRBSheet.current.open()}>
             <Text style={styles.buttonsText}>Contactar</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.contactButton}
             activeOpacity={1}
-            onPress={() => console.log('contact agent')}>
+            onPress={() => Linking.openURL(`tel://${agent.phone_number}`)}>
             <Text style={styles.buttonsText}>Llamar</Text>
           </TouchableOpacity>
         </View>
