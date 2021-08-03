@@ -1,7 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ListingDetails } from '../screens';
+import { ListingDetails, ImageSlider } from '../screens';
 import Tabs from './tabs';
+import ListingStackScreen from './ListingStack';
 import ListingHeaderRight from '../components/ListingHeaderRight';
 
 const HomeStack = createStackNavigator();
@@ -15,6 +16,10 @@ const HomeStackScreen = (props) => {
         {() => <Tabs listings={props.listings} inputText={props.inputText}/>}
       </HomeStack.Screen>
       <HomeStack.Screen
+        name="ListingStack"
+        options={{headerShown: false}}
+        component={ListingStackScreen}/>
+      {/* <HomeStack.Screen
         name="ListingDetails"
         options={{
           title: '',
@@ -24,6 +29,9 @@ const HomeStackScreen = (props) => {
           headerRight: () => <ListingHeaderRight/>
         }}
         component={ListingDetails}/>
+        <HomeStack.Screen name="ImageSlider">
+          {() => <ImageSlider/>}
+        </HomeStack.Screen> */}
     </HomeStack.Navigator>
   )
 }

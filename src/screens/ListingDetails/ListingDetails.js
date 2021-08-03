@@ -4,17 +4,19 @@ TouchableOpacity, Share, Linking } from 'react-native';
 import NumberFormat from 'react-number-format';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
+import { faCheckCircle, faImage } from '@fortawesome/free-regular-svg-icons';
 import ReadMore from 'react-native-read-more-text';
 import RBSheet from "react-native-raw-bottom-sheet";
 import ContactForm from '../../components/ContactForm/ContactForm';
+import { useNavigation } from '@react-navigation/native';
 import styles from './Styles';
 
 
-const ListingDetails = ({route, navigation}) => {
-  const [listing, setListing] = useState({})
-  const [agent, setAgent] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
+const ListingDetails = (props) => {
+  // const [listing, setListing] = useState({})
+  // const [agent, setAgent] = useState({})
+  // const [isLoading, setIsLoading] = useState(true)
+  const navigation = useNavigation();
   const refRBSheet = useRef()
   const amenities = {
     half_bathrooms: '1/2 Baño',
@@ -40,25 +42,29 @@ const ListingDetails = ({route, navigation}) => {
     hardwood_floor: 'Piso de Madera'
   }
 
-  useEffect(() => {
-    fetch(`http://192.168.1.17:5000/api/properties/${route.params.listingId}`)
-      .then(response => response.json())
-      .then(res => {
-        setListing(res)
-        console.log(res)
-        return fetch(`http://192.168.1.17:5000/api/agents/${res.agent_id}`)
-      })
-      .then(response => response.json())
-      .then(res => {
-        setAgent(res)
-        setIsLoading(false)
-        console.log(res)
-      })
-  }, [route.params.listingId])
+  // useEffect(() => {
+  //   console.log(props)
+  // }, [props])
+
+  // useEffect(() => {
+  //   fetch(`http://192.168.1.5:5000/api/properties/${route.params.listingId}`)
+  //     .then(response => response.json())
+  //     .then(res => {
+  //       setListing(res)
+  //       console.log(res)
+  //       return fetch(`http://192.168.1.5:5000/api/agents/${res.agent_id}`)
+  //     })
+  //     .then(response => response.json())
+  //     .then(res => {
+  //       setAgent(res)
+  //       setIsLoading(false)
+  //       console.log(res)
+  //     })
+  // }, [route.params.listingId])
 
   const renderAmenities = () => (
-    Object.keys(listing['PropertyAmenity'])
-    .filter(amenity => listing['PropertyAmenity'][amenity] === true).map(amenity => {
+    Object.keys(props.listing['PropertyAmenity'])
+    .filter(amenity => props.listing['PropertyAmenity'][amenity] === true).map(amenity => {
       return (
         <View style={styles.amenity} key={amenity}>
           <FontAwesomeIcon icon={faCheckCircle} size={16} color={'#1657D7'}/>
@@ -87,30 +93,48 @@ const ListingDetails = ({route, navigation}) => {
   const onShare = async () => {
     try {
       await Share.share({
-        url: `https://www.hauzzy.com/properties/${listing.id}`
+        url: `https://www.hauzzy.com/properties/${props.listing.id}`
       })
     } catch (error) {
       alert(error.message);
     }
   }
 
-  if (!isLoading) {
+  const renderAgentPicture = () => {
+    if (props.agent['AgentProfilePicture'] === null) {
+      return 'https://agents-profile-pictures.s3.us-east-2.amazonaws.com/profile-avatar.png'
+    } else {
+      return props.agent['AgentProfilePicture'].location
+    }
+  }
+
+  if (!props.isLoading) {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <View style={styles.imageContainer}>
+          <TouchableOpacity
+            style={styles.imageContainer}
+            activeOpacity={1}
+            onPress={() => navigation.navigate('ImageSlider', {
+              // screen: 'listingDetails',
+              // images: listing['PropertyPictures']
+            })}>
             <Image
               style={styles.listingImage}
-              source={{ uri: listing['PropertyPictures'][0].location }}/>
-          </View>
+              source={{ uri: props.listing['PropertyPictures'][0].location }}/>
+            <View style={styles.imageCount}>
+              <Text style={styles.countText}>{props.listing['PropertyPictures'].length}</Text>
+              <FontAwesomeIcon icon={faImage} size={22} color={'#fff'}/>
+            </View>
+          </TouchableOpacity>
           <View style={styles.infoContainer}>
             <View style={styles.topInfoCont}>
               <View style={styles.topHeader}>
                 <NumberFormat
-                  value={listing.listing_price}
+                  value={props.listing.listing_price}
                   displayType={'text'}
                   thousandSeparator={true}
-                  prefix={'$'}
+                  prefix={'US$'}
                   renderText={(value) => (
                     <Text style={styles.price}>{value}</Text>
                   )} />
@@ -118,17 +142,17 @@ const ListingDetails = ({route, navigation}) => {
                     <FontAwesomeIcon icon={faEllipsisH} size={20} color={'grey'}/>
                   </TouchableOpacity>
               </View>
-              <Text style={styles.sector}>{listing.sector}</Text>
+              <Text style={styles.sector}>{props.listing.sector}</Text>
               <View style={styles.stats}>
                 <Text style={styles.bedsBaths}>
-                  {listing.bedrooms} {listing.bedrooms > 1 ? 'habs' : 'hab'}
+                  {props.listing.bedrooms} {props.listing.bedrooms > 1 ? 'habs' : 'hab'}
                 </Text>
                 <Text style={styles.bedsBaths}>
-                  {listing.bathrooms} {listing.bathrooms > 1 ? 'baños' : 'baño'}
+                  {props.listing.bathrooms} {props.listing.bathrooms > 1 ? 'baños' : 'baño'}
                 </Text>
-                <Text style={styles.parq}>{listing.parking_spaces} parq</Text>
+                <Text style={styles.parq}>{props.listing.parking_spaces} parq</Text>
                 <View style={styles.mts}>
-                  <Text style={styles.mtsNum}>{listing.square_meters} m</Text>
+                  <Text style={styles.mtsNum}>{props.listing.square_meters} m</Text>
                   <Text style={styles.mtsSup}>2</Text>
                 </View >
               </View>
@@ -145,24 +169,24 @@ const ListingDetails = ({route, navigation}) => {
                 numberOfLines={6}
                 renderTruncatedFooter={renderTruncatedFooter}
                 renderRevealedFooter={renderRevealedFooter}>
-                <Text style={styles.descriptionText}>{listing.description}</Text>
+                <Text style={styles.descriptionText}>{props.listing.description}</Text>
               </ReadMore>
             </View>
             <View style={styles.agentContainer}>
               <View style={styles.agentWrapper}>
                 <Image
                   style={styles.image}
-                  source={{ uri: agent['AgentProfilePicture'].location }}/>
+                  source={{ uri: renderAgentPicture() }}/>
                 <View style={styles.agentInfo}>
-                  <Text style={styles.agentName}>{agent.name}</Text>
-                  {agent.phone_number && <NumberFormat
-                    value={agent.phone_number}
+                  <Text style={styles.agentName}>{props.agent.name}</Text>
+                  {props.agent.phone_number && <NumberFormat
+                    value={props.agent.phone_number}
                     displayType={'text'}
                     format="(###) ###-####"
                     renderText={(value) => (
                       <Text>{value}</Text>
                     )} />}
-                  <Text>{`Propiedades (${agent.n_listings})`}</Text>
+                  <Text>{`Propiedades (${props.agent.n_listings})`}</Text>
                 </View>
               </View>
             </View>
@@ -193,7 +217,7 @@ const ListingDetails = ({route, navigation}) => {
           <TouchableOpacity
             style={styles.contactButton}
             activeOpacity={1}
-            onPress={() => Linking.openURL(`tel://${agent.phone_number}`)}>
+            onPress={() => Linking.openURL(`tel://${props.agent.phone_number}`)}>
             <Text style={styles.buttonsText}>Llamar</Text>
           </TouchableOpacity>
         </View>

@@ -23,7 +23,7 @@ const MainStackScreen = (props) => {
 
   useEffect(() => {
     // console.log(propertyType)
-    fetch(`http://192.168.1.17:5000/api/properties`)
+    fetch(`https://www.hauzzy.com/api/properties`)
       .then(response => response.json())
       .then(res => {
         setListings(res.properties)
@@ -36,7 +36,7 @@ const MainStackScreen = (props) => {
   }
 
   const searchListings = (province, sector, listingType, minPrice, maxPrice, bedrooms, bathrooms, propertyType) => {
-    fetch(`http://192.168.1.17:5000/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
+    fetch(`https://www.hauzzy.com/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
       .then(response => response.json())
       .then(res => {
         setListings(res.properties)

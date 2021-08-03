@@ -13,9 +13,12 @@ const ListingCard = (props) => {
 
   return (
     <TouchableOpacity style={styles.container}
-                      onPress={() => navigation.navigate('ListingDetails', {
-                        screen: 'ListingDetails',
+                      onPress={() => navigation.navigate('ListingStack', {
+                        // screen: 'ListingDetails',
                         listingId: props.listing.id
+                        // params: {
+                        //   listingId: props.listing.id
+                        // }
                       })}
                       activeOpacity={1}>
       {/* Image */}
@@ -28,7 +31,7 @@ const ListingCard = (props) => {
           <NumberFormat value={props.listing.listing_price}
                         displayType={'text'}
                         thousandSeparator={true}
-                        prefix={'$'}
+                        prefix={'US$'}
                         renderText={(value) => (
                           <Text style={styles.price}>{value}</Text>
                         )} />

@@ -6,13 +6,32 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     height: 250,
-    backgroundColor: 'lightgray'
+    backgroundColor: 'lightgray',
+    position: 'relative'
   },
   listingImage: {
     flex: 1,
     width: '100%',
     height: '100%',
     resizeMode: 'cover',
+  },
+  imageCount: {
+    flexDirection: 'row',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    borderRadius: 6,
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    marginRight: 15,
+    marginBottom: 15,
+    padding: 8,
+    backgroundColor: 'rgba(0,0,0,.7)'
+  },
+  countText: {
+    fontSize: 18,
+    color: '#fff',
+    marginRight: 8
   },
   infoContainer: {
     paddingHorizontal: 15,
