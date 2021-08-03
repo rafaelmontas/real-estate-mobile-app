@@ -19,19 +19,6 @@ const HomeStackScreen = (props) => {
         name="ListingStack"
         options={{headerShown: false}}
         component={ListingStackScreen}/>
-      {/* <HomeStack.Screen
-        name="ListingDetails"
-        options={{
-          title: '',
-          headerTintColor: 'gray',
-          headerBackTitleVisible: false,
-          headerRightContainerStyle: {paddingRight: 16},
-          headerRight: () => <ListingHeaderRight/>
-        }}
-        component={ListingDetails}/>
-        <HomeStack.Screen name="ImageSlider">
-          {() => <ImageSlider/>}
-        </HomeStack.Screen> */}
     </HomeStack.Navigator>
   )
 }

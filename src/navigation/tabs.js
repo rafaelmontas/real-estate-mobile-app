@@ -5,7 +5,7 @@ import { faSearch, faHeart, faUserCircle, faBell } from '@fortawesome/free-solid
 import { faHeart as faHeartReg,
   faUserCircle as faUserCircleReg,
   faBell as faBellReg } from '@fortawesome/free-regular-svg-icons';
-import { Search, Likes } from '../screens';
+import { Search, Likes, Alerts } from '../screens';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +32,7 @@ const Tabs = (props) => {
           }
         }
       }}/>
-      <Tab.Screen name="Alertas" component={Likes} options={{
+      <Tab.Screen name="Alertas" component={Alerts} options={{
         tabBarIcon: ({ focused, color }) => {
           if (focused) {
             return <FontAwesomeIcon icon={faBell} size={25} color={color}/>
