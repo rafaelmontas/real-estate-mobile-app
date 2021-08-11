@@ -4,6 +4,8 @@ import Filter from './Filter/Filter'
 import ListingDetails from './ListingDetails/ListingDetails';
 import ImageSlider from './ImageSlider/ImageSlider';
 import Alerts from './Alerts/Alerts';
+import Profile from './Profile/Profile';
+import Auth from './Auth/Auth';
 import Likes from './Likes'
 
 export {
@@ -13,5 +15,7 @@ export {
   ListingDetails,
   ImageSlider,
   Alerts,
+  Profile,
+  Auth,
   Likes
 }

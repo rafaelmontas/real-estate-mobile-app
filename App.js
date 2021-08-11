@@ -1,8 +1,9 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import MainStackScreen from './src/navigation/MainStack';
+import { AuthContext } from './src/utils/authContext';
 
 const Stack = createStackNavigator();
 const MyTheme = {
@@ -12,12 +13,22 @@ const MyTheme = {
 
 
 const App = () => {
+  const [user, setUser] = useState(null)
+  const [userLoading, setUserLoading] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  // useEffect(() => {
+
+  // }, [])
+
   return (
-    <NavigationContainer theme={MyTheme}>
-      <Stack.Navigator>
-        <Stack.Screen name="Main" options={{headerShown: false}} component={MainStackScreen}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthContext.Provider>
+      <NavigationContainer theme={MyTheme}>
+        <Stack.Navigator>
+          <Stack.Screen name="Main" options={{headerShown: false}} component={MainStackScreen}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AuthContext.Provider>
   )
 }
 

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-native';
+import { Button, Text } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import { SearchAutoComplete, Filter } from '../screens';
+import { SearchAutoComplete, Filter, Auth } from '../screens';
 import HomeStackScreen from './HomeStack';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faImage } from '@fortawesome/free-regular-svg-icons';
 
 const MainStack = createStackNavigator();
 
@@ -45,7 +48,12 @@ const MainStackScreen = (props) => {
   }
 
   return (
-    <MainStack.Navigator mode="modal">
+    <MainStack.Navigator
+      mode="modal"
+      screenOptions={{
+        cardOverlayEnabled: true,
+            ...TransitionPresets.ModalPresentationIOS,
+      }}>
       <MainStack.Screen name="Home" options={{headerShown: false}}>
         {() => <HomeStackScreen listings={listings} inputText={inputText}/>}
       </MainStack.Screen>
@@ -71,8 +79,8 @@ const MainStackScreen = (props) => {
                           // component={Filter}
                           options={{
                             // gestureEnabled: true,
-                            // cardOverlayEnabled: true,
-                            // ...TransitionPresets.ModalPresentationIOS,
+                            cardOverlayEnabled: true,
+                            ...TransitionPresets.ModalSlideFromBottomIOS,
                             title: 'Filtros',
                             headerLeftContainerStyle: {paddingLeft: 6},
                             headerRightContainerStyle: {paddingRight: 6},
@@ -98,6 +106,19 @@ const MainStackScreen = (props) => {
                     setReset={setReset}
                     onSearch={searchListings}/>}
         </MainStack.Screen>
+        <MainStack.Screen
+          name="AuthScreen"
+          options={({route}) => ({
+            title: route.params.title,
+            headerStyle: {height: 50},
+            headerTintColor: '#444444',
+            headerStatusBarHeight: 0,
+            headerBackTitleVisible: false,
+            headerBackImage: () => <FontAwesomeIcon icon={faTimes} size={20} color={'#444444'} style={{marginLeft: 12}}/>,
+            cardOverlayEnabled: true,
+            ...TransitionPresets.ModalPresentationIOS,
+          })}
+          component={Auth}/>
     </MainStack.Navigator>
   )
 }
