@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, TextInput } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
@@ -8,16 +8,25 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../../utils/authContext';
 import styles from './Styles';
 
-const Auth = ({navigation}) => {
-  const [mode, setMode] = useState('login')
+const Auth = ({navigation, route}) => {
+  const [mode, setMode] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [name, setName] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
-
   const { getUser } = useContext(AuthContext)
 
+  useEffect(() => {
+    console.log(route.params.title)
+    if (route.params.title === 'Registrarse') {
+      setMode('Registrarse')
+    } else {
+      setMode('login')
+    }
+  }, [route.params.title])
+
   const renderForm = () => {
-    if(mode === 'login') {
+    if (mode === 'login') {
       return (
         <View>
           <Text style={styles.header}>Iniciar sesión</Text>
@@ -78,6 +87,47 @@ const Auth = ({navigation}) => {
               <Text style={styles.signupText}>Iniciar sesión</Text>
             </TouchableOpacity>
           </View>
+          <View style={styles.formContainer}>
+            <View style={styles.formGroup}>
+              <TextInput
+                style={styles.formInputs}
+                value={name}
+                // keyboardType="email-address"
+                placeholder="Nombre"
+                // autoCapitalize="none"
+                onChangeText={text => setName(text)}/>
+              {errorMsg === 'Email incorrecto' && renderErr()}
+            </View>
+            <View style={styles.formGroup}>
+              <TextInput
+                style={styles.formInputs}
+                value={email}
+                keyboardType="email-address"
+                placeholder="Email"
+                autoCapitalize="none"
+                onChangeText={text => setEmail(text)}/>
+              {/* {errorMsg === 'Ingresar Email y Contraseña' || 'Email ya existe' && renderErr()} */}
+            </View>
+            <View style={styles.formGroup}>
+              <TextInput
+                style={styles.formInputs}
+                value={password}
+                keyboardType="default"
+                secureTextEntry={true}
+                placeholder="Contraseña"
+                autoCapitalize="none"
+                onChangeText={text => setPassword(text)}/>
+              {errorMsg !== '' && renderErr()}
+            </View>
+            <View style={styles.formGroup}>
+              <TouchableOpacity
+                style={styles.submitButton}
+                activeOpacity={1}
+                onPress={() => handleSignUp()}>
+                <Text style={styles.buttonText}>Registrarse</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       )
     }
@@ -95,6 +145,10 @@ const Auth = ({navigation}) => {
   const handleModeChange = (mode) => {
     navigation.setOptions({ title: mode === 'login' ? 'Iniciar sesión' : 'Registrarse' })
     setMode(mode)
+    setName('')
+    setEmail('')
+    setPassword('')
+    setErrorMsg('')
   }
   const handleLogin = () => {
     console.log('login clicked', email, password)
@@ -110,6 +164,23 @@ const Auth = ({navigation}) => {
       console.log('erro: ', err.response.data)
       setErrorMsg(err.response.data.msg)
     })
+  }
+
+  const handleSignUp = () => {
+    const body = {name: name, email: email, password: password}
+    console.log('signup', body)
+
+    axios.post('http://192.168.1.17:5000/users', body)
+      .then(res => {
+        console.log(res.data)
+        AsyncStorage.setItem('user-jwt', res.data.token)
+        getUser()
+      })
+      .catch(err => {
+        console.log(err.response.data, err.response.status)
+        // this.setState({errorMsg: err.response.data.msg})
+        setErrorMsg(err.response.data.msg)
+      })
   }
 
   return (
