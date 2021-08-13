@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, TextInput } from 'react-native';
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 // import { faBell } from '@fortawesome/free-regular-svg-icons';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AuthContext } from '../../utils/authContext';
 import styles from './Styles';
 
 const Auth = ({navigation}) => {
   const [mode, setMode] = useState('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  const { getUser } = useContext(AuthContext)
 
   const renderForm = () => {
     if(mode === 'login') {
@@ -29,6 +36,7 @@ const Auth = ({navigation}) => {
                 placeholder="Email"
                 autoCapitalize="none"
                 onChangeText={text => setEmail(text)}/>
+              {errorMsg === 'Email incorrecto' && renderErr()}
             </View>
             <View style={styles.formGroup}>
               <TextInput
@@ -39,6 +47,7 @@ const Auth = ({navigation}) => {
                 placeholder="Contraseña"
                 autoCapitalize="none"
                 onChangeText={text => setPassword(text)}/>
+              {errorMsg === 'Contraseña incorrecta' && renderErr()}
             </View>
             <View style={styles.formGroup}>
               <TouchableOpacity
@@ -74,12 +83,33 @@ const Auth = ({navigation}) => {
     }
   }
 
+  const renderErr = () => {
+    return (
+      <View style={styles.errorContainer}>
+        <FontAwesomeIcon icon={faExclamationCircle} size={16} color={'red'} style={{marginRight: 5}}/>
+        <Text style={styles.errorMsg}>{errorMsg}</Text>
+      </View>
+    )
+  }
+
   const handleModeChange = (mode) => {
     navigation.setOptions({ title: mode === 'login' ? 'Iniciar sesión' : 'Registrarse' })
     setMode(mode)
   }
   const handleLogin = () => {
     console.log('login clicked', email, password)
+    const data = { email: email, password: password };
+
+    axios.post('http://192.168.1.17:5000/user-auth', data)
+    .then(res => {
+      console.log(res)
+      AsyncStorage.setItem('user-jwt', res.data.token)
+      getUser()
+    })
+    .catch(err => {
+      console.log('erro: ', err.response.data)
+      setErrorMsg(err.response.data.msg)
+    })
   }
 
   return (

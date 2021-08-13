@@ -57,6 +57,15 @@ const styles = StyleSheet.create({
     color: '#1657D7',
     fontSize: 16,
     textAlign: 'center'
+  },
+  // Errors
+  errorContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 5
+  },
+  errorMsg: {
+    color: 'red'
   }
 })
 

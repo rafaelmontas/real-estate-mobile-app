@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, Text } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
@@ -7,6 +7,7 @@ import HomeStackScreen from './HomeStack';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle, faImage } from '@fortawesome/free-regular-svg-icons';
+import { AuthContext } from '../utils/authContext';
 
 const MainStack = createStackNavigator();
 
@@ -23,6 +24,7 @@ const MainStackScreen = (props) => {
   const [bathrooms, setBathrooms] = useState(0);
   const [reset, setReset] = useState(false)
   const [listings, setListings] = useState([]);
+  const { isLoggedIn } = useContext(AuthContext)
 
   useEffect(() => {
     // console.log(propertyType)
@@ -106,19 +108,21 @@ const MainStackScreen = (props) => {
                     setReset={setReset}
                     onSearch={searchListings}/>}
         </MainStack.Screen>
-        <MainStack.Screen
-          name="AuthScreen"
-          options={({route}) => ({
-            title: route.params.title,
-            headerStyle: {height: 50},
-            headerTintColor: '#444444',
-            headerStatusBarHeight: 0,
-            headerBackTitleVisible: false,
-            headerBackImage: () => <FontAwesomeIcon icon={faTimes} size={20} color={'#444444'} style={{marginLeft: 12}}/>,
-            cardOverlayEnabled: true,
-            ...TransitionPresets.ModalPresentationIOS,
-          })}
-          component={Auth}/>
+        {!isLoggedIn && (
+          <MainStack.Screen
+            name="AuthScreen"
+            options={({route}) => ({
+              title: route.params.title,
+              headerStyle: {height: 50},
+              headerTintColor: '#444444',
+              headerStatusBarHeight: 0,
+              headerBackTitleVisible: false,
+              headerBackImage: () => <FontAwesomeIcon icon={faTimes} size={20} color={'#444444'} style={{marginLeft: 12}}/>,
+              cardOverlayEnabled: true,
+              ...TransitionPresets.ModalPresentationIOS,
+            })}
+            component={Auth}/>
+          )}
     </MainStack.Navigator>
   )
 }

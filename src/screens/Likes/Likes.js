@@ -5,16 +5,16 @@ import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
 import { AuthContext } from '../../utils/authContext';
 import styles from './Styles';
 
-const Profile = ({navigation}) => {
-  const { logOut, isLoggedIn } = useContext(AuthContext)
-  console.log(isLoggedIn)
+
+const Likes = ({navigation}) => {
+  const { isLoggedIn } = useContext(AuthContext)
 
   if (!isLoggedIn) {
     return (
       <SafeAreaView>
         <View style={styles.container}>
-          <Text style={styles.text}>Perfil de usuario</Text>
-          <Text style={styles.secondText}>Inicia sesión para ver tu perfil.</Text>
+          <Text style={styles.text}>Favoritos</Text>
+          <Text style={styles.secondText}>Inicia sesión para guardar propiedades.</Text>
           <View style={styles.actions}>
             <TouchableOpacity
               style={styles.logInButton}
@@ -41,15 +41,12 @@ const Profile = ({navigation}) => {
   } else {
     return (
       <SafeAreaView>
-        <TouchableOpacity
-              // style={styles.logInButton}
-              activeOpacity={1}
-              onPress={() => logOut()}>
-              <Text style={styles.loginText}>Cerrar sesión</Text>
-            </TouchableOpacity>
+        <View>
+          <Text>Favoritos</Text>
+        </View>
       </SafeAreaView>
     )
   }
 }
 
-export default Profile;
+export default Likes;

@@ -6,7 +6,7 @@ import ImageSlider from './ImageSlider/ImageSlider';
 import Alerts from './Alerts/Alerts';
 import Profile from './Profile/Profile';
 import Auth from './Auth/Auth';
-import Likes from './Likes'
+import Likes from './Likes/Likes'
 
 export {
   Search,

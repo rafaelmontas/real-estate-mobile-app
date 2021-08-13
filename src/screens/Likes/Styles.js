@@ -8,11 +8,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 15,
   },
-  // text: {
-  //   fontSize: 20,
-  //   fontWeight: '700',
-  //   marginTop: 10
-  // },
   text: {
     fontSize: 24,
     fontWeight: '700',
