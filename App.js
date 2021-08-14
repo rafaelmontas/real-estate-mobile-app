@@ -25,7 +25,7 @@ const App = () => {
 
   const getUser = async () => {
     const userJwt = await AsyncStorage.getItem('user-jwt')
-    axios({method: 'get', url: 'http://192.168.1.17:5000/user-auth/user/', headers: {'user-auth': userJwt}})
+    axios({method: 'get', url: 'https://www.hauzzy.com/user-auth/user/', headers: {'user-auth': userJwt}})
       .then(user => {
         console.log(user.data)
         setUser(user.data)

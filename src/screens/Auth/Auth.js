@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Linking } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 // import { faBell } from '@fortawesome/free-regular-svg-icons';
@@ -70,7 +70,7 @@ const Auth = ({navigation, route}) => {
               <TouchableOpacity
                 style={styles.forgotText}
                 activeOpacity={1}
-                onPress={() => handleLogin()}>
+                onPress={() => Linking.openURL('https://www.hauzzy.com/forgot-password')}>
                 <Text style={styles.forgotTextT}>Olvidaste tu contraseña?</Text>
               </TouchableOpacity>
             </View>
@@ -154,7 +154,7 @@ const Auth = ({navigation, route}) => {
     console.log('login clicked', email, password)
     const data = { email: email, password: password };
 
-    axios.post('http://192.168.1.17:5000/user-auth', data)
+    axios.post('https://www.hauzzy.com/user-auth', data)
     .then(res => {
       console.log(res)
       AsyncStorage.setItem('user-jwt', res.data.token)
@@ -169,8 +169,8 @@ const Auth = ({navigation, route}) => {
   const handleSignUp = () => {
     const body = {name: name, email: email, password: password}
     console.log('signup', body)
-
-    axios.post('http://192.168.1.17:5000/users', body)
+    // http://192.168.1.17:5000
+    axios.post('https://www.hauzzy.com/users', body)
       .then(res => {
         console.log(res.data)
         AsyncStorage.setItem('user-jwt', res.data.token)
