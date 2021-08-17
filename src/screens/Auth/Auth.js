@@ -178,7 +178,6 @@ const Auth = ({navigation, route}) => {
       })
       .catch(err => {
         console.log(err.response.data, err.response.status)
-        // this.setState({errorMsg: err.response.data.msg})
         setErrorMsg(err.response.data.msg)
       })
   }

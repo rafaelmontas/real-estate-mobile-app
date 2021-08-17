@@ -16,10 +16,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* HauzzyAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HauzzyAppTests.m */; };
-		71E234121C1B9BBE55CED4C8 /* libPods-HauzzyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A07FA633F430F543A7A34B8 /* libPods-HauzzyApp.a */; };
-		72B01098F0D8F02FB6FDCD8A /* libPods-HauzzyApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FA67AF1753312BC7E78E8C /* libPods-HauzzyApp-tvOSTests.a */; };
-		E0760487F44DFE955A640CC9 /* libPods-HauzzyApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C44ADECFAB8DC7F676A9F3 /* libPods-HauzzyApp-tvOS.a */; };
-		F1964FCF287CB2AA1542056A /* libPods-HauzzyApp-HauzzyAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4C84A9124C8AEFE495A54A /* libPods-HauzzyApp-HauzzyAppTests.a */; };
+		A0B5EBFDCF65ED9A8DBF7CC2 /* libPods-HauzzyApp-HauzzyAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 472CFBBF64080DEFA44DC2CB /* libPods-HauzzyApp-HauzzyAppTests.a */; };
+		CAAC77DD2931F3142F643B0C /* libPods-HauzzyApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6750AFEED5B8664F4FE05FC /* libPods-HauzzyApp-tvOS.a */; };
+		D0F2A98AB7D7BC151AD6B47E /* libPods-HauzzyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E05926FDC8E153FF615F1A9 /* libPods-HauzzyApp.a */; };
+		E70EE7AD0D5BF4D45EF8BAFD /* libPods-HauzzyApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F044AF9E81387942E547B481 /* libPods-HauzzyApp-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,8 @@
 		00E356EE1AD99517003FC87E /* HauzzyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HauzzyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* HauzzyAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HauzzyAppTests.m; sourceTree = "<group>"; };
-		10C44ADECFAB8DC7F676A9F3 /* libPods-HauzzyApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HauzzyApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E05926FDC8E153FF615F1A9 /* libPods-HauzzyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HauzzyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		131F123DAC0270578DF2BA5F /* Pods-HauzzyApp-HauzzyAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-HauzzyAppTests.release.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-HauzzyAppTests/Pods-HauzzyApp-HauzzyAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* HauzzyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HauzzyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = HauzzyApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = HauzzyApp/AppDelegate.m; sourceTree = "<group>"; };
@@ -52,21 +53,20 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HauzzyApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HauzzyApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HauzzyApp/main.m; sourceTree = "<group>"; };
-		2C1474C26D3E7F79811205FF /* Pods-HauzzyApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-tvOS/Pods-HauzzyApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* HauzzyApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HauzzyApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* HauzzyApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HauzzyApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E90E46BB3DE807BBFC1D967 /* Pods-HauzzyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp.debug.xcconfig"; path = "Target Support Files/Pods-HauzzyApp/Pods-HauzzyApp.debug.xcconfig"; sourceTree = "<group>"; };
-		35FA67AF1753312BC7E78E8C /* libPods-HauzzyApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HauzzyApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A07FA633F430F543A7A34B8 /* libPods-HauzzyApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HauzzyApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5DEC0F864C686B491983E25A /* Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-HauzzyAppTests/Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A67DE4CD26555509C87C25BB /* Pods-HauzzyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp.release.xcconfig"; path = "Target Support Files/Pods-HauzzyApp/Pods-HauzzyApp.release.xcconfig"; sourceTree = "<group>"; };
-		AEC127989A6501BFB1B3A891 /* Pods-HauzzyApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-tvOSTests/Pods-HauzzyApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C7D469485F41D7C5E695A137 /* Pods-HauzzyApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-tvOS/Pods-HauzzyApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		DE4C84A9124C8AEFE495A54A /* libPods-HauzzyApp-HauzzyAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HauzzyApp-HauzzyAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3CFC51D1F5FEB552B3817D5 /* Pods-HauzzyApp-HauzzyAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-HauzzyAppTests.release.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-HauzzyAppTests/Pods-HauzzyApp-HauzzyAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		472CFBBF64080DEFA44DC2CB /* libPods-HauzzyApp-HauzzyAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HauzzyApp-HauzzyAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		757DBA8B87D11470F44642CE /* Pods-HauzzyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp.debug.xcconfig"; path = "Target Support Files/Pods-HauzzyApp/Pods-HauzzyApp.debug.xcconfig"; sourceTree = "<group>"; };
+		796FF407F11ECE344E9C6BF8 /* Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-HauzzyAppTests/Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A7ABA4625D600CB8AFEB429 /* Pods-HauzzyApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-tvOSTests/Pods-HauzzyApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		8FA6485AC8B50ABB5E4060A8 /* Pods-HauzzyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp.release.xcconfig"; path = "Target Support Files/Pods-HauzzyApp/Pods-HauzzyApp.release.xcconfig"; sourceTree = "<group>"; };
+		A6750AFEED5B8664F4FE05FC /* libPods-HauzzyApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HauzzyApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADB1D9773561EACB74BA4AC2 /* Pods-HauzzyApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-tvOSTests/Pods-HauzzyApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D08463C4EFB483DF5BE0F16B /* Pods-HauzzyApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-tvOS/Pods-HauzzyApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E12BDD1F5BD09EBA4CDDE75C /* Pods-HauzzyApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-tvOS/Pods-HauzzyApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F415DCC724C399C8EA33A128 /* Pods-HauzzyApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HauzzyApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-HauzzyApp-tvOSTests/Pods-HauzzyApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		F044AF9E81387942E547B481 /* libPods-HauzzyApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HauzzyApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1964FCF287CB2AA1542056A /* libPods-HauzzyApp-HauzzyAppTests.a in Frameworks */,
+				A0B5EBFDCF65ED9A8DBF7CC2 /* libPods-HauzzyApp-HauzzyAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71E234121C1B9BBE55CED4C8 /* libPods-HauzzyApp.a in Frameworks */,
+				D0F2A98AB7D7BC151AD6B47E /* libPods-HauzzyApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0760487F44DFE955A640CC9 /* libPods-HauzzyApp-tvOS.a in Frameworks */,
+				CAAC77DD2931F3142F643B0C /* libPods-HauzzyApp-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72B01098F0D8F02FB6FDCD8A /* libPods-HauzzyApp-tvOSTests.a in Frameworks */,
+				E70EE7AD0D5BF4D45EF8BAFD /* libPods-HauzzyApp-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,10 +148,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				5A07FA633F430F543A7A34B8 /* libPods-HauzzyApp.a */,
-				DE4C84A9124C8AEFE495A54A /* libPods-HauzzyApp-HauzzyAppTests.a */,
-				10C44ADECFAB8DC7F676A9F3 /* libPods-HauzzyApp-tvOS.a */,
-				35FA67AF1753312BC7E78E8C /* libPods-HauzzyApp-tvOSTests.a */,
+				0E05926FDC8E153FF615F1A9 /* libPods-HauzzyApp.a */,
+				472CFBBF64080DEFA44DC2CB /* libPods-HauzzyApp-HauzzyAppTests.a */,
+				A6750AFEED5B8664F4FE05FC /* libPods-HauzzyApp-tvOS.a */,
+				F044AF9E81387942E547B481 /* libPods-HauzzyApp-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,14 +193,14 @@
 		E5867A465FC7B83685541568 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2E90E46BB3DE807BBFC1D967 /* Pods-HauzzyApp.debug.xcconfig */,
-				A67DE4CD26555509C87C25BB /* Pods-HauzzyApp.release.xcconfig */,
-				5DEC0F864C686B491983E25A /* Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig */,
-				E3CFC51D1F5FEB552B3817D5 /* Pods-HauzzyApp-HauzzyAppTests.release.xcconfig */,
-				C7D469485F41D7C5E695A137 /* Pods-HauzzyApp-tvOS.debug.xcconfig */,
-				2C1474C26D3E7F79811205FF /* Pods-HauzzyApp-tvOS.release.xcconfig */,
-				AEC127989A6501BFB1B3A891 /* Pods-HauzzyApp-tvOSTests.debug.xcconfig */,
-				F415DCC724C399C8EA33A128 /* Pods-HauzzyApp-tvOSTests.release.xcconfig */,
+				757DBA8B87D11470F44642CE /* Pods-HauzzyApp.debug.xcconfig */,
+				8FA6485AC8B50ABB5E4060A8 /* Pods-HauzzyApp.release.xcconfig */,
+				796FF407F11ECE344E9C6BF8 /* Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig */,
+				131F123DAC0270578DF2BA5F /* Pods-HauzzyApp-HauzzyAppTests.release.xcconfig */,
+				D08463C4EFB483DF5BE0F16B /* Pods-HauzzyApp-tvOS.debug.xcconfig */,
+				E12BDD1F5BD09EBA4CDDE75C /* Pods-HauzzyApp-tvOS.release.xcconfig */,
+				ADB1D9773561EACB74BA4AC2 /* Pods-HauzzyApp-tvOSTests.debug.xcconfig */,
+				7A7ABA4625D600CB8AFEB429 /* Pods-HauzzyApp-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -212,12 +212,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HauzzyAppTests" */;
 			buildPhases = (
-				C7CEC6C9FC9D0C3D93CBBF3A /* [CP] Check Pods Manifest.lock */,
+				30A6050B49941FBF5290272C /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				EC3EBCE93E491062E380B465 /* [CP] Embed Pods Frameworks */,
-				83A7AA5F70CF4982E3AC3831 /* [CP] Copy Pods Resources */,
+				71F388F19F12787ACF7CF0BD /* [CP] Embed Pods Frameworks */,
+				0E5B517B8149AB07D18FC1E5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,14 +233,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HauzzyApp" */;
 			buildPhases = (
-				1FADD2E005989A19E019625C /* [CP] Check Pods Manifest.lock */,
+				02B912B1E3BB4CCF5D43CCAA /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				59E211A6F4135C2506688328 /* [CP] Embed Pods Frameworks */,
-				B649FFFFAED281E316ECC570 /* [CP] Copy Pods Resources */,
+				745391D70D9FB974A66D43DD /* [CP] Embed Pods Frameworks */,
+				B8B0C76BA2DB432E590AE058 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,7 +255,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HauzzyApp-tvOS" */;
 			buildPhases = (
-				A25CC33C4CC425F743EBBDA2 /* [CP] Check Pods Manifest.lock */,
+				EA2CAF77CAF7D3A112C781E3 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -275,7 +275,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HauzzyApp-tvOSTests" */;
 			buildPhases = (
-				1BB97CAC2A4BAD1F1A957998 /* [CP] Check Pods Manifest.lock */,
+				9FAC3B00C4727185B301489E /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -300,18 +300,22 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = CC6545V52S;
+						ProvisioningStyle = Manual;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = LV99V3QM59;
+						DevelopmentTeam = CC6545V52S;
 						LastSwiftMigration = 1120;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					2D02E48F1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = CC6545V52S;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
@@ -385,31 +389,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		1BB97CAC2A4BAD1F1A957998 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HauzzyApp-tvOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1FADD2E005989A19E019625C /* [CP] Check Pods Manifest.lock */ = {
+		02B912B1E3BB4CCF5D43CCAA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -431,43 +413,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		59E211A6F4135C2506688328 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp/Pods-HauzzyApp-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/double-conversion/double-conversion.framework/double-conversion",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/glog/glog.framework/glog",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp/Pods-HauzzyApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		83A7AA5F70CF4982E3AC3831 /* [CP] Copy Pods Resources */ = {
+		0E5B517B8149AB07D18FC1E5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -515,7 +461,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp-HauzzyAppTests/Pods-HauzzyApp-HauzzyAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A25CC33C4CC425F743EBBDA2 /* [CP] Check Pods Manifest.lock */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		30A6050B49941FBF5290272C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -530,14 +490,80 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HauzzyApp-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-HauzzyApp-HauzzyAppTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B649FFFFAED281E316ECC570 /* [CP] Copy Pods Resources */ = {
+		71F388F19F12787ACF7CF0BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp-HauzzyAppTests/Pods-HauzzyApp-HauzzyAppTests-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/double-conversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/glog/glog.framework/glog",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp-HauzzyAppTests/Pods-HauzzyApp-HauzzyAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		745391D70D9FB974A66D43DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp/Pods-HauzzyApp-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/double-conversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/glog/glog.framework/glog",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp/Pods-HauzzyApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FAC3B00C4727185B301489E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HauzzyApp-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8B0C76BA2DB432E590AE058 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -585,7 +611,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp/Pods-HauzzyApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C7CEC6C9FC9D0C3D93CBBF3A /* [CP] Check Pods Manifest.lock */ = {
+		EA2CAF77CAF7D3A112C781E3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -600,33 +626,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HauzzyApp-HauzzyAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-HauzzyApp-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EC3EBCE93E491062E380B465 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp-HauzzyAppTests/Pods-HauzzyApp-HauzzyAppTests-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/double-conversion/double-conversion.framework/double-conversion",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/glog/glog.framework/glog",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HauzzyApp-HauzzyAppTests/Pods-HauzzyApp-HauzzyAppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -734,9 +738,12 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DEC0F864C686B491983E25A /* Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig */;
+			baseConfigurationReference = 796FF407F11ECE344E9C6BF8 /* Pods-HauzzyApp-HauzzyAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = CC6545V52S;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -751,16 +758,20 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HauzzyApp.app/HauzzyApp";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3CFC51D1F5FEB552B3817D5 /* Pods-HauzzyApp-HauzzyAppTests.release.xcconfig */;
+			baseConfigurationReference = 131F123DAC0270578DF2BA5F /* Pods-HauzzyApp-HauzzyAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = CC6545V52S;
 				INFOPLIST_FILE = HauzzyAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -771,63 +782,79 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HauzzyApp.app/HauzzyApp";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E90E46BB3DE807BBFC1D967 /* Pods-HauzzyApp.debug.xcconfig */;
+			baseConfigurationReference = 757DBA8B87D11470F44642CE /* Pods-HauzzyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rafael Montas Canario (T7FS563SY4)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LV99V3QM59;
+				DEVELOPMENT_TEAM = CC6545V52S;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = HauzzyApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hauzzy.hauzzy;
 				PRODUCT_NAME = HauzzyApp;
+				PROVISIONING_PROFILE_SPECIFIER = "hauzzy-prov-profile";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A67DE4CD26555509C87C25BB /* Pods-HauzzyApp.release.xcconfig */;
+			baseConfigurationReference = 8FA6485AC8B50ABB5E4060A8 /* Pods-HauzzyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hauzzy, SRL (CC6545V52S)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LV99V3QM59;
+				DEVELOPMENT_TEAM = CC6545V52S;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HauzzyApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hauzzy.hauzzy;
 				PRODUCT_NAME = HauzzyApp;
+				PROVISIONING_PROFILE_SPECIFIER = "hauzzy-dist-prov-profile";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7D469485F41D7C5E695A137 /* Pods-HauzzyApp-tvOS.debug.xcconfig */;
+			baseConfigurationReference = D08463C4EFB483DF5BE0F16B /* Pods-HauzzyApp-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -835,7 +862,9 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "HauzzyApp-tvOS/Info.plist";
@@ -847,6 +876,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.HauzzyApp-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
@@ -855,7 +885,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C1474C26D3E7F79811205FF /* Pods-HauzzyApp-tvOS.release.xcconfig */;
+			baseConfigurationReference = E12BDD1F5BD09EBA4CDDE75C /* Pods-HauzzyApp-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -863,8 +893,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "HauzzyApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -875,6 +907,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.HauzzyApp-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
@@ -883,7 +916,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEC127989A6501BFB1B3A891 /* Pods-HauzzyApp-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = ADB1D9773561EACB74BA4AC2 /* Pods-HauzzyApp-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -891,6 +924,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = CC6545V52S;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "HauzzyApp-tvOSTests/Info.plist";
@@ -910,7 +944,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F415DCC724C399C8EA33A128 /* Pods-HauzzyApp-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 7A7ABA4625D600CB8AFEB429 /* Pods-HauzzyApp-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -919,6 +953,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = CC6545V52S;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "HauzzyApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -963,8 +998,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rafael Montas Canario (T7FS563SY4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rafael Montas Canario (T7FS563SY4)";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = CC6545V52S;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -991,6 +1030,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode-marker";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1023,8 +1063,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hauzzy, SRL (CC6545V52S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hauzzy, SRL (CC6545V52S)";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = CC6545V52S;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1043,6 +1087,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
