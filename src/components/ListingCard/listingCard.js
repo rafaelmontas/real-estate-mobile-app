@@ -23,7 +23,7 @@ const ListingCard = (props) => {
       console.log("Set to Not Liked FALSE", liked)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.userLike, props.userLikeId])
+  }, [props.userLike])
 
   const renderLikeButton = () => {
     if (liked) {

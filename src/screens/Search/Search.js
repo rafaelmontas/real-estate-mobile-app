@@ -9,7 +9,6 @@ import styles from './Styles';
 
 const Search = (props) => {
   const navigation = useNavigation();
-  const arr = [{listing_id: 1}, {listing_id: 2}, {listing_id: 3}]
 
   return (
     <SafeAreaView>

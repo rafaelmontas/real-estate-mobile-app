@@ -30,7 +30,7 @@ const MainStackScreen = (props) => {
 
   useEffect(() => {
     // console.log(propertyType)
-    fetch(`http://192.168.1.17:5000/api/properties`)
+    fetch(`https://www.hauzzy.com/api/properties`)
       .then(response => response.json())
       .then(res => {
         setListings(res.properties)
@@ -41,7 +41,7 @@ const MainStackScreen = (props) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
+      axios.get(`https://www.hauzzy.com/users/${user.id}/likes`)
         .then(res => {
           setLikes(res.data.likes)
           console.log(res.data.likes)
@@ -56,10 +56,10 @@ const MainStackScreen = (props) => {
   const handleLike = (listingId) => {
     if (isLoggedIn) {
       const body = {listing_id: listingId, user_id: user.id}
-      axios.post(`http://192.168.1.17:5000/users/${user.id}/likes`, body)
+      axios.post(`https://www.hauzzy.com/users/${user.id}/likes`, body)
       .then(res => {
         console.log('liked', res.data.msg)
-        return axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
+        return axios.get(`https://www.hauzzy.com/users/${user.id}/likes`)
       })
       .then(res => {
         setLikes(res.data.likes)
@@ -71,10 +71,10 @@ const MainStackScreen = (props) => {
     }
   }
   const handleLikeDelete = (likeId) => {
-    axios.delete(`http://192.168.1.17:5000/users/${user.id}/likes/${likeId}`)
+    axios.delete(`https://www.hauzzy.com/users/${user.id}/likes/${likeId}`)
     .then(res => {
       // console.log(res.data.msg)
-      return axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
+      return axios.get(`https://www.hauzzy.com/users/${user.id}/likes`)
     })
     .then(res => {
       setLikes(res.data.likes)

@@ -22,8 +22,12 @@ const HomeStackScreen = (props) => {
       </HomeStack.Screen>
       <HomeStack.Screen
         name="ListingStack"
-        options={{headerShown: false}}
-        component={ListingStackScreen}/>
+        options={{headerShown: false}}>
+          {() => <ListingStackScreen
+                    likes={props.likes}
+                    handleLike={props.handleLike}
+                    handleLikeDelete={props.handleLikeDelete}/>}
+      </HomeStack.Screen>
     </HomeStack.Navigator>
   )
 }
