@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle, faImage } from '@fortawesome/free-regular-svg-icons';
 import { AuthContext } from '../utils/authContext';
+import axios from 'axios';
 
 const MainStack = createStackNavigator();
 
@@ -24,17 +25,62 @@ const MainStackScreen = (props) => {
   const [bathrooms, setBathrooms] = useState(0);
   const [reset, setReset] = useState(false)
   const [listings, setListings] = useState([]);
-  const { isLoggedIn } = useContext(AuthContext)
+  const [likes, setLikes] = useState([])
+  const { isLoggedIn, user } = useContext(AuthContext)
 
   useEffect(() => {
     // console.log(propertyType)
-    fetch(`https://www.hauzzy.com/api/properties`)
+    fetch(`http://192.168.1.17:5000/api/properties`)
       .then(response => response.json())
       .then(res => {
         setListings(res.properties)
         console.log(res)
-      });
+      })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
+        .then(res => {
+          setLikes(res.data.likes)
+          console.log(res.data.likes)
+        })
+        .catch(err => console.log(err))
+    } else {
+      setLikes([])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn])
+
+  const handleLike = (listingId) => {
+    if (isLoggedIn) {
+      const body = {listing_id: listingId, user_id: user.id}
+      axios.post(`http://192.168.1.17:5000/users/${user.id}/likes`, body)
+      .then(res => {
+        console.log('liked', res.data.msg)
+        return axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
+      })
+      .then(res => {
+        setLikes(res.data.likes)
+        console.log(res.data.likes)
+      })
+      .catch(err => console.log(err))
+    } else {
+      navigation.navigate('AuthScreen', {screen: 'AuthScreen', title: 'Iniciar sesión'})
+    }
+  }
+  const handleLikeDelete = (likeId) => {
+    axios.delete(`http://192.168.1.17:5000/users/${user.id}/likes/${likeId}`)
+    .then(res => {
+      // console.log(res.data.msg)
+      return axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
+    })
+    .then(res => {
+      setLikes(res.data.likes)
+    })
+    .catch(err => console.log(err))
+  }
 
   const handleReset = () => {
     setReset(true)
@@ -57,7 +103,12 @@ const MainStackScreen = (props) => {
             ...TransitionPresets.ModalPresentationIOS,
       }}>
       <MainStack.Screen name="Home" options={{headerShown: false}}>
-        {() => <HomeStackScreen listings={listings} inputText={inputText}/>}
+        {() => <HomeStackScreen
+                  listings={listings}
+                  likes={likes}
+                  handleLike={handleLike}
+                  handleLikeDelete={handleLikeDelete}
+                  inputText={inputText}/>}
       </MainStack.Screen>
       <MainStack.Screen name="SearchAutoComplete"
                       options={{

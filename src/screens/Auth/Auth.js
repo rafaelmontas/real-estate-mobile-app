@@ -154,7 +154,7 @@ const Auth = ({navigation, route}) => {
     console.log('login clicked', email, password)
     const data = { email: email, password: password };
 
-    axios.post('https://www.hauzzy.com/user-auth', data)
+    axios.post('http://192.168.1.17:5000/user-auth', data)
     .then(res => {
       console.log(res)
       AsyncStorage.setItem('user-jwt', res.data.token)
@@ -170,7 +170,8 @@ const Auth = ({navigation, route}) => {
     const body = {name: name, email: email, password: password}
     console.log('signup', body)
     // http://192.168.1.17:5000
-    axios.post('https://www.hauzzy.com/users', body)
+    // https://www.hauzzy.com
+    axios.post('http://192.168.1.17:5000/users', body)
       .then(res => {
         console.log(res.data)
         AsyncStorage.setItem('user-jwt', res.data.token)

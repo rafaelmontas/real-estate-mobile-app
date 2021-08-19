@@ -13,7 +13,12 @@ const HomeStackScreen = (props) => {
       <HomeStack.Screen name="MainSearch" options={{
                         headerShown: false
                       }}>
-        {() => <Tabs listings={props.listings} inputText={props.inputText}/>}
+        {() => <Tabs
+                  listings={props.listings}
+                  likes={props.likes}
+                  handleLike={props.handleLike}
+                  handleLikeDelete={props.handleLikeDelete}
+                  inputText={props.inputText}/>}
       </HomeStack.Screen>
       <HomeStack.Screen
         name="ListingStack"

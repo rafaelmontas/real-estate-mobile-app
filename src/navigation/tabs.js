@@ -21,7 +21,12 @@ const Tabs = (props) => {
           <FontAwesomeIcon icon={faSearch} size={25} color={color}/>
         )
       }}>
-        {() => <Search listings={props.listings} inputText={props.inputText}/>}
+        {() => <Search
+                  listings={props.listings}
+                  likes={props.likes}
+                  handleLike={props.handleLike}
+                  handleLikeDelete={props.handleLikeDelete}
+                  inputText={props.inputText}/>}
       </Tab.Screen>
       <Tab.Screen name="Favoritos" component={Likes} options={{
         tabBarIcon: ({ focused, color }) => {

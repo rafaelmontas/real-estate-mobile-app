@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHeart, faCircle } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,36 @@ import styles from './styles';
 
 const ListingCard = (props) => {
   const navigation = useNavigation();
+  const [liked, setLiked] = useState(false)
+
+  useEffect(() => {
+    console.log(props.userLike, props.userLikeId)
+    // props.userLike !== -1 ? setLiked(true) : setLiked(false)
+    if (props.userLike !== -1) {
+      setLiked(true)
+      console.log("Set to liked TRUE", liked)
+    } else {
+      setLiked(false)
+      console.log("Set to Not Liked FALSE", liked)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.userLike, props.userLikeId])
+
+  const renderLikeButton = () => {
+    if (liked) {
+      return (
+        <TouchableOpacity activeOpacity={1} onPress={() => props.handleLikeDelete(props.userLikeId.id)}>
+          <FontAwesomeIcon icon={faHeart} size={25} color={'red'}/>
+        </TouchableOpacity>
+      )
+    } else {
+      return (
+        <TouchableOpacity activeOpacity={1} onPress={() => props.handleLike(props.listing.id)}>
+          <FontAwesomeIcon icon={faHeartReg} size={25} color={'grey'}/>
+        </TouchableOpacity>
+      )
+    }
+  }
 
   return (
     <TouchableOpacity style={styles.container}
@@ -35,7 +65,7 @@ const ListingCard = (props) => {
                         renderText={(value) => (
                           <Text style={styles.price}>{value}</Text>
                         )} />
-          <FontAwesomeIcon icon={faHeartReg} size={25} color={'grey'}/>
+          {renderLikeButton()}
         </View>
         <View style={styles.info}>
           <Text style={styles.bedsBaths}>

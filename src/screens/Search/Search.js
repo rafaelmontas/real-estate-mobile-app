@@ -9,6 +9,7 @@ import styles from './Styles';
 
 const Search = (props) => {
   const navigation = useNavigation();
+  const arr = [{listing_id: 1}, {listing_id: 2}, {listing_id: 3}]
 
   return (
     <SafeAreaView>
@@ -26,7 +27,11 @@ const Search = (props) => {
       <View style={styles.flatContainer}>
         <FlatList data={props.listings}
                   renderItem={({item}) => <ListingCard listing={item}
-                  keyExtractor={(itemKey) => itemKey.id} />}
+                  userLike={props.likes.findIndex(x => x.listing_id === item.id)}
+                  userLikeId={props.likes.find(x => x.listing_id === item.id)}
+                  handleLike={props.handleLike}
+                  handleLikeDelete={props.handleLikeDelete}/>}
+                  keyExtractor={(itemKey) => itemKey.id}
                   contentContainerStyle={styles.listContainer}/>
       </View>
     </SafeAreaView>
