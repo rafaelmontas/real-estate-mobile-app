@@ -6,7 +6,7 @@ import { AuthContext } from '../../utils/authContext';
 import styles from './Styles';
 
 const Profile = ({navigation}) => {
-  const { logOut, isLoggedIn } = useContext(AuthContext)
+  const { logOut, isLoggedIn, userProfile } = useContext(AuthContext)
   console.log(isLoggedIn)
 
   if (!isLoggedIn) {
@@ -40,13 +40,26 @@ const Profile = ({navigation}) => {
     )
   } else {
     return (
-      <SafeAreaView>
-        <TouchableOpacity
-              // style={styles.logInButton}
+      <SafeAreaView style={{backgroundColor: '#f7f7f7'}}>
+        <View style={[styles.container, styles.containerIn]}>
+          <Text style={styles.text}>Perfil</Text>
+          <View style={styles.infoContainer}>
+            <Text style={styles.titleText}>Nombre:</Text>
+            <Text style={styles.subText}>{userProfile.name}</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.titleText}>Email:</Text>
+            <Text style={styles.subText}>{userProfile.email}</Text>
+          </View>
+          <View style={styles.actions}>
+            <TouchableOpacity
+              style={styles.logOutButton}
               activeOpacity={1}
               onPress={() => logOut()}>
-              <Text style={styles.loginText}>Cerrar sesión</Text>
+              <Text style={styles.logOutText}>Cerrar sesión</Text>
             </TouchableOpacity>
+          </View>
+        </View>
       </SafeAreaView>
     )
   }
