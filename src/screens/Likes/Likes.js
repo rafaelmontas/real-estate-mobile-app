@@ -18,7 +18,16 @@ const Likes = (props) => {
     if (userProfile.properties.length === 0) {
       return (
         <View style={styles.container}>
-          <Text>No likes</Text>
+          <Text style={styles.text}>Favoritos</Text>
+          <Text style={styles.secondText}>Guarda propiedades y todas tus favoritas estarán aquí.</Text>
+          <View style={styles.actions}>
+            <TouchableOpacity
+              style={styles.signUpButton}
+              activeOpacity={1}
+              onPress={() => navigation.navigate('Buscar')}>
+              <Text style={styles.signUpText}>Buscar Propiedades</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )
     } else {

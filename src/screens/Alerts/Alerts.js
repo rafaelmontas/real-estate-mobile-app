@@ -40,10 +40,11 @@ const Alerts = ({navigation}) => {
     )
   } else {
     return (
-      <SafeAreaView style={styles.cont}>
+      <SafeAreaView>
         <View style={styles.container}>
-          <FontAwesomeIcon icon={faBell} size={55} color={'#1657D7'}/>
-          <Text style={styles.text}>Las notificaciones te dejarán saber de novedades importantes.</Text>
+          <Text style={styles.text}>Notificaciones</Text>
+          {/* <FontAwesomeIcon icon={faBell} size={55} color={'#1657D7'}/> */}
+          <Text style={styles.secondText}>Aquí encontrarás tus notificaciones. Te dejaremos saber de novedades importantes.</Text>
         </View>
       </SafeAreaView>
     )
