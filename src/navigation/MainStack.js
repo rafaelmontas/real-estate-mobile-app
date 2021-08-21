@@ -7,6 +7,7 @@ import HomeStackScreen from './HomeStack';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle, faImage } from '@fortawesome/free-regular-svg-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../utils/authContext';
 import axios from 'axios';
 
@@ -26,7 +27,7 @@ const MainStackScreen = (props) => {
   const [reset, setReset] = useState(false)
   const [listings, setListings] = useState([]);
   const [likes, setLikes] = useState([])
-  const { isLoggedIn, user } = useContext(AuthContext)
+  const { isLoggedIn, user, getUserProfile } = useContext(AuthContext)
 
   useEffect(() => {
     // console.log(propertyType)
@@ -53,7 +54,8 @@ const MainStackScreen = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn])
 
-  const handleLike = (listingId) => {
+  const handleLike = async (listingId) => {
+    const userJwt = await AsyncStorage.getItem('user-jwt')
     if (isLoggedIn) {
       const body = {listing_id: listingId, user_id: user.id}
       axios.post(`https://www.hauzzy.com/users/${user.id}/likes`, body)
@@ -64,13 +66,15 @@ const MainStackScreen = (props) => {
       .then(res => {
         setLikes(res.data.likes)
         console.log(res.data.likes)
+        getUserProfile(userJwt)
       })
       .catch(err => console.log(err))
     } else {
       navigation.navigate('AuthScreen', {screen: 'AuthScreen', title: 'Iniciar sesión'})
     }
   }
-  const handleLikeDelete = (likeId) => {
+  const handleLikeDelete = async (likeId) => {
+    const userJwt = await AsyncStorage.getItem('user-jwt')
     axios.delete(`https://www.hauzzy.com/users/${user.id}/likes/${likeId}`)
     .then(res => {
       // console.log(res.data.msg)
@@ -78,6 +82,7 @@ const MainStackScreen = (props) => {
     })
     .then(res => {
       setLikes(res.data.likes)
+      getUserProfile(userJwt)
     })
     .catch(err => console.log(err))
   }

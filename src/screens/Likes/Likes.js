@@ -1,13 +1,43 @@
 import React, { useContext } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, FlatList } from 'react-native';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 // import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { AuthContext } from '../../utils/authContext';
+import { useNavigation } from '@react-navigation/native';
+import ListingCard from '../../components/ListingCard/listingCard';
 import styles from './Styles';
 
 
-const Likes = ({navigation}) => {
-  const { isLoggedIn } = useContext(AuthContext)
+const Likes = (props) => {
+  const navigation = useNavigation();
+  const { isLoggedIn, userProfile } = useContext(AuthContext)
+
+  console.log(props.likes, props.likes.length)
+
+  const renderLikes = () => {
+    if (userProfile.properties.length === 0) {
+      return (
+        <View style={styles.container}>
+          <Text>No likes</Text>
+        </View>
+      )
+    } else {
+      return (
+        <View style={styles.flatCont}>
+          {/* <Text style={styles.header}>Favoritos</Text> */}
+          <FlatList data={userProfile.properties}
+                    ListHeaderComponent={LikesHeader}
+                    renderItem={({item}) => <ListingCard listing={item}
+                    userLike={props.likes.findIndex(x => x.listing_id === item.id)}
+                    userLikeId={props.likes.find(x => x.listing_id === item.id)}
+                    handleLike={props.handleLike}
+                    handleLikeDelete={props.handleLikeDelete}/>}
+                    keyExtractor={(itemKey) => itemKey.id}
+                    contentContainerStyle={styles.container}/>
+        </View>
+      )
+    }
+  }
 
   if (!isLoggedIn) {
     return (
@@ -41,12 +71,14 @@ const Likes = ({navigation}) => {
   } else {
     return (
       <SafeAreaView>
-        <View>
-          <Text>Favoritos</Text>
-        </View>
+        {renderLikes()}
       </SafeAreaView>
     )
   }
+}
+
+const LikesHeader = () => {
+  return <Text style={styles.header}>Favoritos</Text>
 }
 
 export default Likes;

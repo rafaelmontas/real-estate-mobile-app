@@ -28,7 +28,7 @@ const Tabs = (props) => {
                   handleLikeDelete={props.handleLikeDelete}
                   inputText={props.inputText}/>}
       </Tab.Screen>
-      <Tab.Screen name="Favoritos" component={Likes} options={{
+      <Tab.Screen name="Favoritos" options={{
         tabBarIcon: ({ focused, color }) => {
           if (focused) {
             return <FontAwesomeIcon icon={faHeart} size={25} color={color}/>
@@ -36,7 +36,12 @@ const Tabs = (props) => {
             return <FontAwesomeIcon icon={faHeartReg} size={25} color={color}/>
           }
         }
-      }}/>
+      }}>
+        {() => <Likes
+                  likes={props.likes}
+                  handleLike={props.handleLike}
+                  handleLikeDelete={props.handleLikeDelete}/>}
+      </Tab.Screen>
       <Tab.Screen name="Alertas" component={Alerts} options={{
         tabBarIcon: ({ focused, color }) => {
           if (focused) {

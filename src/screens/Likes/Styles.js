@@ -7,6 +7,13 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 15,
+    // backgroundColor: 'red'
+  },
+  flatCont: {
+    // flex: 1,
+    // padding: 15,
+    // marginBottom: 100
+    height: '100%',
   },
   text: {
     fontSize: 24,
@@ -50,6 +57,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     color: 'white'
+  },
+  // likes
+  header: {
+    fontSize: 22,
+    fontWeight: '700',
+    // marginTop: 20,
+    marginBottom: 20
   }
 })
 

@@ -16,11 +16,13 @@ const MyTheme = {
 
 const App = () => {
   const [user, setUser] = useState(null)
+  const [userProfile, setUserProfile] = useState(null)
   const [userLoading, setUserLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     getUser()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getUser = async () => {
@@ -29,6 +31,13 @@ const App = () => {
       .then(user => {
         console.log(user.data)
         setUser(user.data)
+        return axios.get(`https://www.hauzzy.com/users/${user.data.id}`, {
+          headers: { 'user-auth': userJwt }
+        })
+      })
+      .then(res => {
+        console.log(res.data)
+        setUserProfile(res.data)
         setIsLoggedIn(true)
         setUserLoading(false)
       })
@@ -36,8 +45,26 @@ const App = () => {
         console.log(err.response.data, err.response.status)
         AsyncStorage.removeItem('user-jwt')
         setUser(null)
+        setUserProfile(null)
         setIsLoggedIn(false)
         setUserLoading(false)
+      })
+  }
+
+  const getUserProfile = async (userJwt) => {
+    // const userJwt = await AsyncStorage.getItem('user-jwt')
+    console.log('user profiel called')
+    axios.get(`https://www.hauzzy.com/users/${user.id}`, {headers: { 'user-auth': userJwt }})
+      .then(res => {
+        console.log(res.data)
+        setUserProfile(res.data)
+      })
+      .catch(err => {
+        console.log(err.response.data, err.response.status)
+        AsyncStorage.removeItem('user-jwt')
+        setUser(null)
+        setUserProfile(null)
+        setIsLoggedIn(false)
       })
   }
 
@@ -51,9 +78,11 @@ const App = () => {
     <AuthContext.Provider
       value={{
         user: user,
+        userProfile: userProfile,
         userLoading: userLoading,
         isLoggedIn: isLoggedIn,
         getUser: getUser,
+        getUserProfile: getUserProfile,
         logOut: logOut
       }}>
       <NavigationContainer theme={MyTheme}>
