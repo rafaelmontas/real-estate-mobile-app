@@ -9,11 +9,13 @@ import styles from './Styles';
 
 const SearchAutoComplete = (props) => {
   const [suggestions, setSuggestions] = useState(sectorsProvinces.slice(0, 6));
+  const [localText, setLocalText] = useState('')
   const navigation = useNavigation();
 
   useFocusEffect(React.useCallback(() => {
     // Do something when the screen is focused
     console.log('search mounted')
+    setLocalText(props.inputText)
     return () => {
       // Do something when the screen is unfocused
       // Useful for cleanup functions
@@ -26,12 +28,14 @@ const SearchAutoComplete = (props) => {
     // console.log(text)
     if (text.length === 0) {
       setSuggestions(sectorsProvinces.slice(0, 6))
-      props.setInputText(text)
+      setLocalText(text)
+      // props.setInputText(text)
     } else {
       const regex = new RegExp(`${text}`, 'i');
       const newSuggestions = sectorsProvinces.sort(v => v.sector).filter(v => regex.test(v.sector)).slice(0, 6);
       setSuggestions(newSuggestions)
-      props.setInputText(text)
+      setLocalText(text)
+      // props.setInputText(text)
     }
   }
 
@@ -51,7 +55,7 @@ const SearchAutoComplete = (props) => {
           <FontAwesomeIcon icon={faSearch} size={18} color={'grey'}/>
           <TextInput style={styles.SearchInput}
                      placeholder="Buscar"
-                     value={props.inputText}
+                     value={localText}
                      autoFocus={true}
                      onChangeText={text => onTextChange(text)}/>
           <TouchableOpacity style={styles.cancelButton} activeOpacity={1} onPress={() => navigation.goBack()}>
@@ -70,7 +74,8 @@ const SearchAutoComplete = (props) => {
                   </TouchableOpacity>
                 )}
                 keyExtractor={(itemKey) => itemKey.sector}
-                contentContainerStyle={styles.suggestContainer}/>
+                contentContainerStyle={styles.suggestContainer}
+                keyboardShouldPersistTaps={'handled'}/>
     </SafeAreaView>
   )
 }

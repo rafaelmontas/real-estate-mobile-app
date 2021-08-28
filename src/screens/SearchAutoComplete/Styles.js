@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     paddingLeft: 25,
     // paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: 'lightgrey'
+    borderBottomColor: 'lightgrey',
+    // backgroundColor: 'blue'
   },
   suggestInfo: {
     marginLeft: 12
