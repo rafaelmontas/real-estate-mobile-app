@@ -54,14 +54,14 @@ const SearchAutoComplete = (props) => {
                      value={props.inputText}
                      autoFocus={true}
                      onChangeText={text => onTextChange(text)}/>
-          <TouchableOpacity style={styles.cancelButton} onPress={() => navigation.goBack()}>
+          <TouchableOpacity style={styles.cancelButton} activeOpacity={1} onPress={() => navigation.goBack()}>
             <Text style={styles.cancelText}>Cancelar</Text>
           </TouchableOpacity>
         </View>
       </View>
       <FlatList data={suggestions}
                 renderItem={({item}) => (
-                  <TouchableOpacity style={styles.suggestion} onPress={() => onSelect(item.province, item.sector)}>
+                  <TouchableOpacity style={styles.suggestion} activeOpacity={1} onPress={() => onSelect(item.province, item.sector)}>
                     <FontAwesomeIcon icon={faMapMarkerAlt} size={20} color={'grey'}/>
                     <View style={styles.suggestInfo}>
                       <Text style={styles.infoSector}>{item.sector}</Text>

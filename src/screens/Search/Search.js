@@ -14,11 +14,11 @@ const Search = (props) => {
     <SafeAreaView>
       <View style={styles.SearchHeader}>
         <View style={styles.searchButton}>
-          <TouchableOpacity style={styles.searchText} onPress={() => navigation.navigate('SearchAutoComplete')}>
+          <TouchableOpacity style={styles.searchText} activeOpacity={1} onPress={() => navigation.navigate('SearchAutoComplete')}>
             <FontAwesomeIcon icon={faSearch} size={18} color={'grey'}/>
             <Text style={styles.searchInnerText}>{props.inputText  === '' ? 'Buscar' : props.inputText}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.filterButton} onPress={() => navigation.navigate('Filters')}>
+          <TouchableOpacity style={styles.filterButton} activeOpacity={1} onPress={() => navigation.navigate('Filters')}>
             <Text style={styles.filterText}>Filtros</Text>
           </TouchableOpacity>
         </View>

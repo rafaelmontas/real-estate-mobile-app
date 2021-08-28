@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'grey',
     borderRadius: 8,
-    padding: 13
+    // backgroundColor: 'blue',
+    padding: 8
   },
   searchText: {
     flexDirection: 'row',
@@ -27,7 +28,8 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
     flex: 1,
     borderRightColor: 'grey',
-    borderRightWidth: 1
+    borderRightWidth: 1,
+    padding: 5
   },
   searchInnerText: {
     fontSize: 16,
@@ -35,7 +37,9 @@ const styles = StyleSheet.create({
     color: 'grey'
   },
   filterButton: {
-    marginLeft: 13
+    marginLeft: 13,
+    // backgroundColor: 'green',
+    padding: 5
   },
   filterText: {
     fontSize: 14,

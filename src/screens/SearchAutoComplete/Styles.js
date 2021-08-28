@@ -19,18 +19,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'grey',
     borderRadius: 8,
-    padding: 13
+    // backgroundColor: 'blue',
+    padding: 8,
+    paddingLeft: 13
+    // paddingHorizontal: 13
   },
   SearchInput: {
     // backgroundColor: 'blue',
+    // backgroundColor: 'red',
     fontSize: 16,
     flex: 1,
     marginLeft: 8,
     borderRightColor: 'grey',
-    borderRightWidth: 1
+    borderRightWidth: 1,
+    paddingVertical: 5
   },
   cancelButton: {
-    marginLeft: 13
+    marginLeft: 13,
+    // backgroundColor: 'green',
+    padding: 5
   },
   cancelText: {
     fontSize: 14,
@@ -39,12 +46,14 @@ const styles = StyleSheet.create({
   },
   // Suggestions
   suggestContainer: {
-    padding: 15
+    // padding: 15
   },
   suggestion: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 12,
+    padding: 15,
+    paddingLeft: 25,
+    // paddingVertical: 15,
     borderBottomWidth: 1,
     borderBottomColor: 'lightgrey'
   },
@@ -54,11 +63,11 @@ const styles = StyleSheet.create({
   infoSector: {
     fontSize: 15,
     color: 'black',
-    fontWeight: '100'
+    fontWeight: '400'
   },
   infoProvince: {
     color: 'grey',
-    fontWeight: '100'
+    fontWeight: '400'
   }
 })
 
