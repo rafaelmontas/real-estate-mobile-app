@@ -10,6 +10,7 @@ import { faCheckCircle, faImage } from '@fortawesome/free-regular-svg-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../utils/authContext';
 import axios from 'axios';
+import SplashScreen from 'react-native-splash-screen';
 
 const MainStack = createStackNavigator();
 
@@ -35,6 +36,7 @@ const MainStackScreen = (props) => {
       .then(response => response.json())
       .then(res => {
         setListings(res.properties)
+        SplashScreen.hide()
         console.log(res)
       })
       // eslint-disable-next-line react-hooks/exhaustive-deps
