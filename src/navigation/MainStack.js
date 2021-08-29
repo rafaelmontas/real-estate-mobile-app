@@ -96,12 +96,26 @@ const MainStackScreen = (props) => {
   }
 
   const searchListings = (province, sector, listingType, minPrice, maxPrice, bedrooms, bathrooms, propertyType) => {
-    fetch(`https://www.hauzzy.com/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
-      .then(response => response.json())
+    axios.get(`https://www.hauzzy.com/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
       .then(res => {
-        setListings(res.properties)
-        console.log(res)
-      });
+        setListings(res.data.properties)
+        console.log(res.data)
+        const body = {
+          province,
+          sector,
+          listing_type: listingType,
+          min_price: minPrice,
+          max_price: maxPrice,
+          bedrooms,
+          bathrooms,
+          property_type: propertyType.join(),
+          ha_id: null,
+          user_id: isLoggedIn ? user.id : null
+        }
+        return axios.post("https://www.hauzzy.com/api/searches", body)
+      })
+      .then(res => console.log("Search Saved!", res.status))
+      .catch(err => console.log(err))
   }
 
   return (

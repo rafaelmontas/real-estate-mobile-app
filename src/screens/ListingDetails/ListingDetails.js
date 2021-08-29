@@ -10,6 +10,7 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import ContactForm from '../../components/ContactForm/ContactForm';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../utils/authContext';
+import axios from 'axios';
 import styles from './Styles';
 
 
@@ -44,9 +45,19 @@ const ListingDetails = (props) => {
     hardwood_floor: 'Piso de Madera'
   }
 
-  // useEffect(() => {
-  //   console.log(props)
-  // }, [props])
+  useEffect(() => {
+    if (!props.isLoading) {
+      const body = {
+        listing_id: props.listing.id,
+        agent_id: props.agent.id,
+        ha_id: null,
+        user_id: isLoggedIn ? userProfile.id : null
+      }
+      axios.post(`https://www.hauzzy.com/api/properties/${props.listing.id}/views`, body)
+      .then(res => console.log(res))
+      .catch(err => console.log(err)) 
+    }
+  }, [props.isLoading])
 
   // useEffect(() => {
   //   fetch(`http://192.168.1.5:5000/api/properties/${route.params.listingId}`)
