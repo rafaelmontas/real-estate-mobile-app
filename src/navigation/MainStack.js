@@ -28,6 +28,7 @@ const MainStackScreen = (props) => {
   const [reset, setReset] = useState(false)
   const [listings, setListings] = useState([]);
   const [likes, setLikes] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const { isLoggedIn, user, getUserProfile } = useContext(AuthContext)
 
   useEffect(() => {
@@ -36,6 +37,7 @@ const MainStackScreen = (props) => {
       .then(response => response.json())
       .then(res => {
         setListings(res.properties)
+        setIsLoading(false)
         SplashScreen.hide()
         console.log(res)
       })
@@ -112,6 +114,7 @@ const MainStackScreen = (props) => {
       <MainStack.Screen name="Home" options={{headerShown: false}}>
         {() => <HomeStackScreen
                   listings={listings}
+                  isLoading={isLoading}
                   likes={likes}
                   handleLike={handleLike}
                   handleLikeDelete={handleLikeDelete}

@@ -15,6 +15,7 @@ const HomeStackScreen = (props) => {
                       }}>
         {() => <Tabs
                   listings={props.listings}
+                  isLoading={props.isLoading}
                   likes={props.likes}
                   handleLike={props.handleLike}
                   handleLikeDelete={props.handleLikeDelete}

@@ -11,7 +11,7 @@ const Search = (props) => {
   const navigation = useNavigation();
 
   const renderResults = () => {
-    if (props.listings.length === 0) {
+    if (props.listings.length === 0 && !props.isLoading) {
       return (
         <View style={styles.noResults}>
           <Text style={styles.mainNoResults}>Sin resultados</Text>

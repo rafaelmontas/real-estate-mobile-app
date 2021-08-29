@@ -23,6 +23,7 @@ const Tabs = (props) => {
       }}>
         {() => <Search
                   listings={props.listings}
+                  isLoading={props.isLoading}
                   likes={props.likes}
                   handleLike={props.handleLike}
                   handleLikeDelete={props.handleLikeDelete}
