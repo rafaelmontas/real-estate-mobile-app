@@ -4,7 +4,9 @@ const styles = StyleSheet.create({
   modalContainer: {
     paddingHorizontal: 15,
     paddingVertical: 20,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    height: '100%',
+    // backgroundColor: 'red'
   },
   modalHeader: {
     fontSize: 20,
@@ -42,6 +44,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: 'white'
+  },
+  leadView: {
+    // backgroundColor: 'red',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 

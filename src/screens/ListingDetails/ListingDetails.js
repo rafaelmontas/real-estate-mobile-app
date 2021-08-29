@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { SafeAreaView, View, Text, ScrollView, Image,
 TouchableOpacity, Share, Linking } from 'react-native';
 import NumberFormat from 'react-number-format';
@@ -9,6 +9,7 @@ import ReadMore from 'react-native-read-more-text';
 import RBSheet from "react-native-raw-bottom-sheet";
 import ContactForm from '../../components/ContactForm/ContactForm';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../utils/authContext';
 import styles from './Styles';
 
 
@@ -18,6 +19,7 @@ const ListingDetails = (props) => {
   // const [isLoading, setIsLoading] = useState(true)
   const navigation = useNavigation();
   const refRBSheet = useRef()
+  const { isLoggedIn, userProfile } = useContext(AuthContext)
   const amenities = {
     half_bathrooms: '1/2 Baño',
     air_conditioner: 'Aire Acondicionado',
@@ -198,14 +200,11 @@ const ListingDetails = (props) => {
           closeOnPressMask={true}
           height={700}
           customStyles={{
-            container: {
-              borderRadius: 12
-            },
-            draggableIcon: {
-              backgroundColor: 'grey'
-            }
+            // wrapper: loginOpen ? styles.modalStylesWrapper : {},
+            container: styles.modalStylesContainer,
+            draggableIcon: styles.modalStylesDraggable
           }}>
-          <ContactForm/>
+          <ContactForm user={userProfile} agent={props.agent} listingId={props.listing.id} isLoggedIn={isLoggedIn}/>
         </RBSheet>
         <View style={styles.agentContact}>
           <TouchableOpacity

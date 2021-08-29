@@ -171,6 +171,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: 'white'
+  },
+  modalStylesWrapper: {
+    display: 'none'
+  },
+  modalStylesContainer: {
+    borderRadius: 12
+  },
+  modalStylesDraggable: {
+    backgroundColor: 'grey'
   }
 })
 
