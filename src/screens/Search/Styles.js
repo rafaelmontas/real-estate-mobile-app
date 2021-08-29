@@ -49,6 +49,44 @@ const styles = StyleSheet.create({
   flatContainer: {
     marginBottom: 150
   },
+  noResults: {
+    // flex: 1,
+    // backgroundColor: 'red',
+    height: '100%',
+    // padding: 15,
+    paddingHorizontal: 45,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  mainNoResults: {
+    fontSize: 20,
+    fontWeight: '600',
+    marginBottom: 15
+  },
+  subNoResults: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: 'gray',
+    // fontWeight: '500',
+    marginBottom: 15
+  },
+  OpenFilters: {
+    // marginTop: 10,
+    // flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 14,
+    backgroundColor: '#1657D7',
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#1657D7'
+  },
+  filtersText: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: 'white'
+  },
   listContainer: {
     padding: 15
   }
