@@ -66,6 +66,17 @@ const styles = StyleSheet.create({
   },
   errorMsg: {
     color: 'red'
+  },
+  privacyPolicy: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 5
+  },
+  privacyPolicyText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: 'gray'
   }
 })
 

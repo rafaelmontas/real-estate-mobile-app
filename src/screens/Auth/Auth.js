@@ -127,6 +127,15 @@ const Auth = ({navigation, route}) => {
                 <Text style={styles.buttonText}>Registrarse</Text>
               </TouchableOpacity>
             </View>
+            <View style={styles.privacyPolicy}>
+              <Text style={styles.privacyPolicyText}>Acepto los
+                <Text style={{color: '#1657D7'}} onPress={() => Linking.openURL('https://www.hauzzy.com/terms-and-conditions')}> Términos de Uso</Text>
+                  <Text> y
+                    <Text style={{color: '#1657D7'}} onPress={() => Linking.openURL('https://www.hauzzy.com/privacy-policy')}> Política de Privacidad</Text>
+                  </Text>
+                {/* </Text> */}
+              </Text>
+            </View>
           </View>
         </View>
       )

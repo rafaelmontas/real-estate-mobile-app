@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, Linking } from 'react-native';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 // import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { AuthContext } from '../../utils/authContext';
@@ -58,6 +58,13 @@ const Profile = ({navigation}) => {
               onPress={() => logOut()}>
               <Text style={styles.logOutText}>Cerrar sesión</Text>
             </TouchableOpacity>
+          </View>
+          <View style={{alignItems: 'center', marginTop: 20}}>
+            <Text style={{color: '#1657D7', fontSize: 16}} onPress={() => Linking.openURL('https://www.hauzzy.com/terms-and-conditions')}> Términos de Uso
+              <Text style={{color: 'gray'}}> y
+                <Text style={{color: '#1657D7'}} onPress={() => Linking.openURL('https://www.hauzzy.com/privacy-policy')}> Política de Privacidad</Text>
+              </Text>
+            </Text>
           </View>
         </View>
       </SafeAreaView>
