@@ -55,8 +55,9 @@ const ListingDetails = (props) => {
       }
       axios.post(`https://www.hauzzy.com/api/properties/${props.listing.id}/views`, body)
       .then(res => console.log(res))
-      .catch(err => console.log(err)) 
+      .catch(err => console.log(err))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isLoading])
 
   // useEffect(() => {
