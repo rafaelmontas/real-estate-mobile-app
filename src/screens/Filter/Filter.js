@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, ScrollView, Text, TouchableOpacity, Platform } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUmbrellaBeach, faHome, faCity } from '@fortawesome/free-solid-svg-icons';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons';
@@ -189,6 +189,8 @@ const Filter = (props) => {
               onValuesChangeFinish={() => setScrollEnabled(true)}
               onValuesChange={(values) => handlePriceRange(values)}
               sliderLength={280}
+              markerOffsetY={Platform.OS === 'ios' ? 0 : 3}
+              // markerStyle={{backgroundColor: 'blue'}}
               trackStyle={styles.trackStyle}
               />
           </View>

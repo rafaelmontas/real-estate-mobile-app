@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button, Text } from 'react-native';
+import { Button, Text, TouchableOpacity, Pressable } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import { SearchAutoComplete, Filter, Auth } from '../screens';
@@ -159,10 +159,13 @@ const MainStackScreen = (props) => {
                             cardOverlayEnabled: true,
                             ...TransitionPresets.ModalSlideFromBottomIOS,
                             title: 'Filtros',
-                            headerLeftContainerStyle: {paddingLeft: 6},
-                            headerRightContainerStyle: {paddingRight: 6},
-                            headerLeft: () => <Button title="Cancelar" onPress={() => navigation.goBack()}/>,
-                            headerRight: () => <Button title="Limpiar" onPress={() => handleReset()}/>
+                            headerTitleAlign: 'center',
+                            headerLeftContainerStyle: {paddingLeft: 15},
+                            headerRightContainerStyle: {paddingRight: 15},
+                            headerLeft: () => <Pressable onPress={() => navigation.goBack()} style={{padding: 8, paddingLeft: 0}}><Text style={{fontSize: 18, color: '#007AFF'}}>Cancelar</Text></Pressable>,
+                            headerRight: () => <Pressable onPress={() => handleReset()} style={{padding: 8, paddingRight: 0}}><Text style={{fontSize: 18, color: '#007AFF'}}>Limpiar</Text></Pressable>
+                            // headerLeft: () => <Button title="Cancelar" onPress={() => navigation.goBack()}/>,
+                            // headerRight: () => <Button title="Limpiar" onPress={() => handleReset()}/>
                           }}>
           {() => <Filter
                     province={province}
