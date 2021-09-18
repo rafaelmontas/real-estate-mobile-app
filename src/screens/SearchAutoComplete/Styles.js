@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
   // Suggestions
   suggestContainer: {
     // padding: 15
-    height: '100%'
+    // height: '100%',
+    // backgroundColor: 'red'
   },
   suggestion: {
     flexDirection: 'row',

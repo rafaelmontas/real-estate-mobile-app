@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, FlatList, Text, TouchableOpacity, TextInput } from 'react-native';
+import { SafeAreaView, View, FlatList, Text, TouchableOpacity, TextInput, Platform, LayoutAnimation, UIManager, ScrollView } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { sectorsProvinces } from '../../utils/sectorsProvinces';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import styles from './Styles';
 
+// if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
+//   UIManager.setLayoutAnimationEnabledExperimental(true);
+// }
 
 const SearchAutoComplete = (props) => {
   const [suggestions, setSuggestions] = useState(sectorsProvinces.slice(0, 6));
@@ -21,6 +24,7 @@ const SearchAutoComplete = (props) => {
       // Useful for cleanup functions
       console.log('search unmounted')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []))
 
 
@@ -49,7 +53,7 @@ const SearchAutoComplete = (props) => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{height: '100%'}}>
       <View style={styles.SearchHeader}>
         <View style={styles.SearchInputCont}>
           <FontAwesomeIcon icon={faSearch} size={18} color={'grey'}/>
@@ -63,9 +67,22 @@ const SearchAutoComplete = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <FlatList data={suggestions}
+      <ScrollView keyboardShouldPersistTaps={'handled'}>
+        {suggestions.map((item) => {
+          return (
+            <TouchableOpacity style={styles.suggestion} activeOpacity={1} onPress={() => onSelect(item.province, item.sector)} key={item.id}>
+              <FontAwesomeIcon icon={faMapMarkerAlt} size={20} color={'grey'}/>
+              <View style={styles.suggestInfo}>
+                <Text style={styles.infoSector}>{item.sector}</Text>
+                <Text style={styles.infoProvince}>{item.province}</Text>
+              </View>
+            </TouchableOpacity>
+          )
+        })}
+      </ScrollView>
+      {/* <FlatList data={suggestions}
                 renderItem={({item}) => (
-                  <TouchableOpacity style={styles.suggestion} activeOpacity={1} onPress={() => onSelect(item.province, item.sector)}>
+                  <TouchableOpacity style={styles.suggestion} activeOpacity={1} onPress={() => onSelect(item.province, item.sector)} key={item.id}>
                     <FontAwesomeIcon icon={faMapMarkerAlt} size={20} color={'grey'}/>
                     <View style={styles.suggestInfo}>
                       <Text style={styles.infoSector}>{item.sector}</Text>
@@ -75,7 +92,7 @@ const SearchAutoComplete = (props) => {
                 )}
                 keyExtractor={(itemKey) => itemKey.sector}
                 contentContainerStyle={styles.suggestContainer}
-                keyboardShouldPersistTaps={'handled'}/>
+                keyboardShouldPersistTaps={'handled'}/> */}
     </SafeAreaView>
   )
 }
