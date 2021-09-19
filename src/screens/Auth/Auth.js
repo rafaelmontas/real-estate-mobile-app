@@ -32,7 +32,7 @@ const Auth = ({navigation, route}) => {
           <Text style={styles.header}>Iniciar sesión</Text>
           <View style={styles.subDivision}>
             <Text style={styles.subHeader}>Necesitas una cuenta?</Text>
-            <TouchableOpacity activeOpacity={1} onPress={() => handleModeChange('signup')}>
+            <TouchableOpacity activeOpacity={1} onPress={() => handleModeChange('signup')} style={{padding: 4}}>
               <Text style={styles.signupText}>Registrate</Text>
             </TouchableOpacity>
           </View>
@@ -47,8 +47,7 @@ const Auth = ({navigation, route}) => {
                 onChangeText={text => setEmail(text)}/>
               {errorMsg === 'Email incorrecto' && renderErr()}
             </View>
-            <View style={styles.formGroup}>
-              <TextInput
+            <TextInput
                 style={styles.formInputs}
                 value={password}
                 keyboardType="default"
@@ -56,6 +55,15 @@ const Auth = ({navigation, route}) => {
                 placeholder="Contraseña"
                 autoCapitalize="none"
                 onChangeText={text => setPassword(text)}/>
+            <View style={styles.formGroup}>
+              {/* <TextInput
+                style={styles.formInputs}
+                value={password}
+                keyboardType="default"
+                secureTextEntry={true}
+                placeholder="Contraseña"
+                autoCapitalize="none"
+                onChangeText={text => setPassword(text)}/> */}
               {errorMsg === 'Contraseña incorrecta' && renderErr()}
             </View>
             <View style={styles.formGroup}>
@@ -83,7 +91,7 @@ const Auth = ({navigation, route}) => {
           <Text style={styles.header}>Registrarse</Text>
           <View style={styles.subDivision}>
             <Text style={styles.subHeader}>Tienes una cuenta?</Text>
-            <TouchableOpacity activeOpacity={1} onPress={() => handleModeChange('login')}>
+            <TouchableOpacity activeOpacity={1} onPress={() => handleModeChange('login')} style={{padding: 4}}>
               <Text style={styles.signupText}>Iniciar sesión</Text>
             </TouchableOpacity>
           </View>
