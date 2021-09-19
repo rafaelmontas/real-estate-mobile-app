@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, Linking } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, Linking, StatusBar } from 'react-native';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 // import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { AuthContext } from '../../utils/authContext';
@@ -12,6 +12,7 @@ const Profile = ({navigation}) => {
   if (!isLoggedIn) {
     return (
       <SafeAreaView>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content"/>
         <View style={styles.container}>
           <Text style={styles.text}>Perfil de usuario</Text>
           <Text style={styles.secondText}>Inicia sesión para ver tu perfil.</Text>
@@ -41,6 +42,7 @@ const Profile = ({navigation}) => {
   } else {
     return (
       <SafeAreaView style={{backgroundColor: '#f7f7f7'}}>
+        {/* <StatusBar backgroundColor="#f7f7f7" barStyle="dark-content"/> */}
         <View style={[styles.container, styles.containerIn]}>
           <Text style={styles.text}>Perfil</Text>
           <View style={styles.infoContainer}>

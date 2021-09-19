@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, StatusBar } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { AuthContext } from '../../utils/authContext';
@@ -10,6 +10,7 @@ const Alerts = ({navigation}) => {
   if (!isLoggedIn) {
     return (
       <SafeAreaView>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content"/>
         <View style={styles.container}>
         <Text style={styles.text}>Notificaciones</Text>
           <Text style={styles.secondText}>
@@ -41,6 +42,7 @@ const Alerts = ({navigation}) => {
   } else {
     return (
       <SafeAreaView>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content"/>
         <View style={styles.container}>
           <Text style={styles.text}>Notificaciones</Text>
           {/* <FontAwesomeIcon icon={faBell} size={55} color={'#1657D7'}/> */}

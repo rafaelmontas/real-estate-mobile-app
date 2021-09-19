@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, FlatList, Text, TouchableOpacity, StatusBar } from 'react-native';
 import ListingCard from '../../components/ListingCard/listingCard';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -40,6 +40,7 @@ const Search = (props) => {
 
   return (
     <SafeAreaView>
+      <StatusBar backgroundColor="#fff" barStyle="dark-content"/>
       <View style={styles.SearchHeader}>
         <View style={styles.searchButton}>
           <TouchableOpacity style={styles.searchText} activeOpacity={1} onPress={() => navigation.navigate('SearchAutoComplete')}>

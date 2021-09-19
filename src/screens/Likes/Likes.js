@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, FlatList, StatusBar } from 'react-native';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 // import { faBell } from '@fortawesome/free-regular-svg-icons';
 import { AuthContext } from '../../utils/authContext';
@@ -51,6 +51,7 @@ const Likes = (props) => {
   if (!isLoggedIn) {
     return (
       <SafeAreaView>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content"/>
         <View style={styles.container}>
           <Text style={styles.text}>Favoritos</Text>
           <Text style={styles.secondText}>Inicia sesión para guardar propiedades.</Text>
@@ -80,6 +81,7 @@ const Likes = (props) => {
   } else {
     return (
       <SafeAreaView>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content"/>
         {renderLikes()}
       </SafeAreaView>
     )

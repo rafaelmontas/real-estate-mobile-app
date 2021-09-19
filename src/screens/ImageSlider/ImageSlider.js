@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import styles from './Styles';
 
 const ImageSlider = (props) => {
@@ -9,6 +9,7 @@ const ImageSlider = (props) => {
     <SafeAreaView style={styles.sliderContainer}>
       {/* <View style={{width: '100%', height: '60%'}}> */}
         {/* <Text>image slider</Text> */}
+        <StatusBar backgroundColor="#000" barStyle="light-content"/>
         <ScrollView
           horizontal
           pagingEnabled
