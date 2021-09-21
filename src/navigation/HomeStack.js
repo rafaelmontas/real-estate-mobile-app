@@ -27,7 +27,11 @@ const HomeStackScreen = (props) => {
           {() => <ListingStackScreen
                     likes={props.likes}
                     handleLike={props.handleLike}
-                    handleLikeDelete={props.handleLikeDelete}/>}
+                    handleLikeDelete={props.handleLikeDelete}
+                    platform={props.platform}
+                    os={props.os}
+                    ipAddress={props.ipAddress}
+                    udid={props.udid}/>}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   )

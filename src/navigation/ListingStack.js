@@ -14,12 +14,14 @@ const ListingStackScreen = (props) => {
   // const [active, setActive] = useState(0)
 
   useEffect(() => {
-    fetch(`https://www.hauzzy.com/api/properties/${route.params.listingId}`)
+    // https://www.hauzzy.com/api/properties/${route.params.listingId}
+    fetch(`http://192.168.1.17:5000/api/properties/${route.params.listingId}`)
       .then(response => response.json())
       .then(res => {
         setListing(res)
         console.log(res)
-        return fetch(`https://www.hauzzy.com/api/agents/${res.agent_id}`)
+        // https://www.hauzzy.com/api/agents/${res.agent_id}
+        return fetch(`http://192.168.1.17:5000/api/agents/${res.agent_id}`)
       })
       .then(response => response.json())
       .then(res => {
@@ -56,12 +58,13 @@ const ListingStackScreen = (props) => {
                                 handleLikeDelete={props.handleLikeDelete}
                                 listingId={route.params.listingId}/>
         }}>
-          {() => <ListingDetails listing={listing} agent={agent} isLoading={isLoading}/>}
+          {() => <ListingDetails listing={listing} agent={agent} isLoading={isLoading} platform={props.platform} os={props.os} ipAddress={props.ipAddress} udid={props.udid}/>}
       </ListingStack.Screen>
         <ListingStack.Screen
           name="ImageSlider"
           options={{
             title: 'Fotos',
+            headerTitleAlign: 'center',
             headerTintColor: '#fff',
             headerBackTitleVisible: false,
             headerStyle: {backgroundColor: '#000'},

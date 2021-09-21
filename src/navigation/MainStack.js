@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../utils/authContext';
 import axios from 'axios';
 import SplashScreen from 'react-native-splash-screen';
+import DeviceInfo from 'react-native-device-info';
 
 const MainStack = createStackNavigator();
 
@@ -29,11 +30,17 @@ const MainStackScreen = (props) => {
   const [listings, setListings] = useState([]);
   const [likes, setLikes] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [os, setOs] = useState('')
+  const [platform, setPlatform] = useState('')
+  const [ipAddress, setIpAddress] = useState('')
+  const [uniqueId, setUniqueId] = useState('')
+  // const [deviceInfo, setDeviceInfo] = useState({})
   const { isLoggedIn, user, getUserProfile } = useContext(AuthContext)
 
   useEffect(() => {
     // console.log(propertyType)
-    fetch(`https://www.hauzzy.com/api/properties`)
+    // https://www.hauzzy.com/api/properties
+    fetch(`http://192.168.1.17:5000/api/properties`)
       .then(response => response.json())
       .then(res => {
         setListings(res.properties)
@@ -41,12 +48,27 @@ const MainStackScreen = (props) => {
         SplashScreen.hide()
         console.log(res)
       })
+    DeviceInfo.getIpAddress().then(ipAddress => {
+      console.log('Ip Address: ', ipAddress)
+      setIpAddress(ipAddress)
+    })
+    DeviceInfo.getDeviceName().then((deviceName) => {
+      console.log(deviceName)
+      setPlatform(deviceName)
+    });
+    let sys = DeviceInfo.getSystemName()
+    console.log(sys)
+    setOs(sys)
+    let uniqueId = DeviceInfo.getUniqueId();
+    console.log(uniqueId)
+    setUniqueId(uniqueId)
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     if (isLoggedIn) {
-      axios.get(`https://www.hauzzy.com/users/${user.id}/likes`)
+      // https://www.hauzzy.com/users/${user.id}/likes
+      axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
         .then(res => {
           setLikes(res.data.likes)
           console.log(res.data.likes)
@@ -61,11 +83,20 @@ const MainStackScreen = (props) => {
   const handleLike = async (listingId) => {
     const userJwt = await AsyncStorage.getItem('user-jwt')
     if (isLoggedIn) {
-      const body = {listing_id: listingId, user_id: user.id}
-      axios.post(`https://www.hauzzy.com/users/${user.id}/likes`, body)
+      const body = {
+        listing_id: listingId,
+        user_id: user.id,
+        platform: platform,
+        os: os,
+        ip_address: ipAddress,
+        udid: uniqueId
+      }
+      // https://www.hauzzy.com/users/${user.id}/likes
+      axios.post(`http://192.168.1.17:5000/users/${user.id}/likes`, body)
       .then(res => {
         console.log('liked', res.data.msg)
-        return axios.get(`https://www.hauzzy.com/users/${user.id}/likes`)
+        // https://www.hauzzy.com/users/${user.id}/likes
+        return axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
       })
       .then(res => {
         setLikes(res.data.likes)
@@ -79,10 +110,12 @@ const MainStackScreen = (props) => {
   }
   const handleLikeDelete = async (likeId) => {
     const userJwt = await AsyncStorage.getItem('user-jwt')
-    axios.delete(`https://www.hauzzy.com/users/${user.id}/likes/${likeId}`)
+    // https://www.hauzzy.com/users/${user.id}/likes/${likeId}
+    axios.delete(`http://192.168.1.17:5000/users/${user.id}/likes/${likeId}`)
     .then(res => {
       // console.log(res.data.msg)
-      return axios.get(`https://www.hauzzy.com/users/${user.id}/likes`)
+      // https://www.hauzzy.com/users/${user.id}/likes
+      return axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
     })
     .then(res => {
       setLikes(res.data.likes)
@@ -96,7 +129,8 @@ const MainStackScreen = (props) => {
   }
 
   const searchListings = (province, sector, listingType, minPrice, maxPrice, bedrooms, bathrooms, propertyType) => {
-    axios.get(`https://www.hauzzy.com/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
+    // https://www.hauzzy.com/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}
+    axios.get(`http://192.168.1.17:5000/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
       .then(res => {
         setListings(res.data.properties)
         console.log(res.data)
@@ -110,9 +144,14 @@ const MainStackScreen = (props) => {
           bathrooms,
           property_type: propertyType.join(),
           ha_id: null,
-          user_id: isLoggedIn ? user.id : null
+          user_id: isLoggedIn ? user.id : null,
+          platform: platform,
+          os: os,
+          ip_address: ipAddress,
+          udid: uniqueId
         }
-        return axios.post("https://www.hauzzy.com/api/searches", body)
+        // https://www.hauzzy.com/api/searches
+        return axios.post("http://192.168.1.17:5000/api/searches", body)
       })
       .then(res => console.log("Search Saved!", res.status))
       .catch(err => console.log(err))
@@ -132,7 +171,11 @@ const MainStackScreen = (props) => {
                   likes={likes}
                   handleLike={handleLike}
                   handleLikeDelete={handleLikeDelete}
-                  inputText={inputText}/>}
+                  inputText={inputText}
+                  platform={platform}
+                  os={os}
+                  ipAddress={ipAddress}
+                  udid={uniqueId}/>}
       </MainStack.Screen>
       <MainStack.Screen name="SearchAutoComplete"
                       options={{

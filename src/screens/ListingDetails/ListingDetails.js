@@ -51,9 +51,14 @@ const ListingDetails = (props) => {
         listing_id: props.listing.id,
         agent_id: props.agent.id,
         ha_id: null,
-        user_id: isLoggedIn ? userProfile.id : null
+        user_id: isLoggedIn ? userProfile.id : null,
+        platform: props.platform,
+        os: props.os,
+        ip_address: props.ipAddress,
+        udid: props.udid
       }
-      axios.post(`https://www.hauzzy.com/api/properties/${props.listing.id}/views`, body)
+      // https://www.hauzzy.com/api/properties/${props.listing.id}/views
+      axios.post(`http://192.168.1.17:5000/api/properties/${props.listing.id}/views`, body)
       .then(res => console.log(res))
       .catch(err => console.log(err))
     }
