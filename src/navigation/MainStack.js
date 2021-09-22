@@ -40,7 +40,8 @@ const MainStackScreen = (props) => {
   useEffect(() => {
     // console.log(propertyType)
     // https://www.hauzzy.com/api/properties
-    fetch(`http://192.168.1.17:5000/api/properties`)
+    // http://192.168.1.17:5000/api/properties
+    fetch(`https://www.hauzzy.com/api/properties`)
       .then(response => response.json())
       .then(res => {
         setListings(res.properties)
@@ -68,7 +69,8 @@ const MainStackScreen = (props) => {
   useEffect(() => {
     if (isLoggedIn) {
       // https://www.hauzzy.com/users/${user.id}/likes
-      axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
+      // http://192.168.1.17:5000/users/${user.id}/likes
+      axios.get(`https://www.hauzzy.com/users/${user.id}/likes`)
         .then(res => {
           setLikes(res.data.likes)
           console.log(res.data.likes)
@@ -92,11 +94,13 @@ const MainStackScreen = (props) => {
         udid: uniqueId
       }
       // https://www.hauzzy.com/users/${user.id}/likes
-      axios.post(`http://192.168.1.17:5000/users/${user.id}/likes`, body)
+      // http://192.168.1.17:5000/users/${user.id}/likes
+      axios.post(`https://www.hauzzy.com/users/${user.id}/likes`, body)
       .then(res => {
         console.log('liked', res.data.msg)
         // https://www.hauzzy.com/users/${user.id}/likes
-        return axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
+        // http://192.168.1.17:5000/users/${user.id}/likes
+        return axios.get(`https://www.hauzzy.com/users/${user.id}/likes`)
       })
       .then(res => {
         setLikes(res.data.likes)
@@ -111,11 +115,13 @@ const MainStackScreen = (props) => {
   const handleLikeDelete = async (likeId) => {
     const userJwt = await AsyncStorage.getItem('user-jwt')
     // https://www.hauzzy.com/users/${user.id}/likes/${likeId}
-    axios.delete(`http://192.168.1.17:5000/users/${user.id}/likes/${likeId}`)
+    // http://192.168.1.17:5000/users/${user.id}/likes/${likeId}
+    axios.delete(`https://www.hauzzy.com/users/${user.id}/likes/${likeId}`)
     .then(res => {
       // console.log(res.data.msg)
       // https://www.hauzzy.com/users/${user.id}/likes
-      return axios.get(`http://192.168.1.17:5000/users/${user.id}/likes`)
+      // http://192.168.1.17:5000/users/${user.id}/likes
+      return axios.get(`https://www.hauzzy.com/users/${user.id}/likes`)
     })
     .then(res => {
       setLikes(res.data.likes)
@@ -130,7 +136,8 @@ const MainStackScreen = (props) => {
 
   const searchListings = (province, sector, listingType, minPrice, maxPrice, bedrooms, bathrooms, propertyType) => {
     // https://www.hauzzy.com/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}
-    axios.get(`http://192.168.1.17:5000/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
+    // http://192.168.1.17:5000/api/properties
+    axios.get(`https://www.hauzzy.com/api/properties?province=${province}&sector=${sector}&listing_type=${listingType}&minPrice=${minPrice}&maxPrice=${maxPrice}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&property_type=${propertyType}`)
       .then(res => {
         setListings(res.data.properties)
         console.log(res.data)
@@ -151,7 +158,8 @@ const MainStackScreen = (props) => {
           udid: uniqueId
         }
         // https://www.hauzzy.com/api/searches
-        return axios.post("http://192.168.1.17:5000/api/searches", body)
+        // http://192.168.1.17:5000/api/searches
+        return axios.post('https://www.hauzzy.com/api/searches', body)
       })
       .then(res => console.log("Search Saved!", res.status))
       .catch(err => console.log(err))

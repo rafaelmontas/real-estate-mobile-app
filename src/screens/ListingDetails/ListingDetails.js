@@ -58,7 +58,7 @@ const ListingDetails = (props) => {
         udid: props.udid
       }
       // https://www.hauzzy.com/api/properties/${props.listing.id}/views
-      axios.post(`http://192.168.1.17:5000/api/properties/${props.listing.id}/views`, body)
+      axios.post(`https://www.hauzzy.com/api/properties/${props.listing.id}/views`, body)
       .then(res => console.log(res))
       .catch(err => console.log(err))
     }

@@ -15,13 +15,15 @@ const ListingStackScreen = (props) => {
 
   useEffect(() => {
     // https://www.hauzzy.com/api/properties/${route.params.listingId}
-    fetch(`http://192.168.1.17:5000/api/properties/${route.params.listingId}`)
+    // http://192.168.1.17:5000/api/properties/${route.params.listingId}
+    fetch(`https://www.hauzzy.com/api/properties/${route.params.listingId}`)
       .then(response => response.json())
       .then(res => {
         setListing(res)
         console.log(res)
         // https://www.hauzzy.com/api/agents/${res.agent_id}
-        return fetch(`http://192.168.1.17:5000/api/agents/${res.agent_id}`)
+        // http://192.168.1.17:5000/api/agents/${res.agent_id}
+        return fetch(`https://www.hauzzy.com/api/agents/${res.agent_id}`)
       })
       .then(response => response.json())
       .then(res => {

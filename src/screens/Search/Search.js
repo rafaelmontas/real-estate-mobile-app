@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, Text, TouchableOpacity, StatusBar } from 'react-native';
+import { SafeAreaView, View, FlatList, Text, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
 import ListingCard from '../../components/ListingCard/listingCard';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -26,15 +26,27 @@ const Search = (props) => {
       )
     } else {
       return (
-        <FlatList data={props.listings}
-                  renderItem={({item}) => <ListingCard listing={item}
-                  userLike={props.likes.findIndex(x => x.listing_id === item.id)}
-                  userLikeId={props.likes.find(x => x.listing_id === item.id)}
-                  handleLike={props.handleLike}
-                  handleLikeDelete={props.handleLikeDelete}/>}
-                  keyExtractor={(itemKey) => itemKey.id}
-                  contentContainerStyle={styles.listContainer}/>
+        <ScrollView style={styles.listContainer}>
+        {props.listings.map((item) => {
+          return (
+              <ListingCard listing={item}
+                    userLike={props.likes.findIndex(x => x.listing_id === item.id)}
+                    userLikeId={props.likes.find(x => x.listing_id === item.id)}
+                    handleLike={props.handleLike}
+                    handleLikeDelete={props.handleLikeDelete}
+                    key={item.id}/>
+          )
+        })}
+        </ScrollView>
       )
+        // <FlatList data={props.listings}
+        //           renderItem={({item}) => <ListingCard listing={item}
+        //           userLike={props.likes.findIndex(x => x.listing_id === item.id)}
+        //           userLikeId={props.likes.find(x => x.listing_id === item.id)}
+        //           handleLike={props.handleLike}
+        //           handleLikeDelete={props.handleLikeDelete}/>}
+        //           keyExtractor={(itemKey) => itemKey.id}
+        //           contentContainerStyle={styles.listContainer}/>
     }
   }
 
